@@ -1,11 +1,10 @@
 import MainWrapper from './Main';
-import { Button } from 'antd';
+import Routes from 'routes';
 
 const App = () => {
   return (
     <MainWrapper>
-      <div>Hello World</div>
-      <Button type='primary'>Open</Button>
+      <Routes />
     </MainWrapper>
   );
 };
