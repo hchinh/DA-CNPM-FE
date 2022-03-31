@@ -1,9 +1,9 @@
 export interface Product {
   id?: number;
-  createdDate?: String | null;
-  modifiedDate?: String | null;
-  createdBy?: String | null;
-  modifiedBy?: String | null;
+  createdDate?: string;
+  modifiedDate?: string;
+  createdBy?: string;
+  modifiedBy?: string;
   name: string;
   brand?: string;
   shortDescription?: string;
