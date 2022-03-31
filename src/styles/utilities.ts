@@ -427,5 +427,6 @@ export const CLASS_UTILITY = `
 
 
   /*---------------------Checkbox--------------------*/
+  
 
 `;

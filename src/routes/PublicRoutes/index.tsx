@@ -1,10 +1,12 @@
+import { Product } from 'containers/Product';
+import { ProductDetail } from 'containers/ProductDetail';
 import { Route } from 'react-router-dom';
 import { TPublicRoutes } from 'routes/interface';
 
 export const PUBLIC_ROUTES: TPublicRoutes = [
   {
     path: '/',
-    element: <div>Home</div>,
+    element: <Product />,
     exact: true,
   },
   {
@@ -15,6 +17,11 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   {
     path: '/register',
     element: <div>Register</div>,
+    exact: true,
+  },
+  {
+    path: '/product/:id',
+    element: <ProductDetail />,
     exact: true,
   },
 ];
