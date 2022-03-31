@@ -1,5 +1,3 @@
-import { Login } from 'containers/Auth/components/Login';
-import { Register } from 'containers/Auth/components/Register';
 import { Product } from 'containers/Product';
 import { ProductDetail } from 'containers/ProductDetail';
 import { Route } from 'react-router-dom';
@@ -13,12 +11,12 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   },
   {
     path: '/login',
-    element: <Login />,
+    element: <div>Login</div>,
     exact: true,
   },
   {
     path: '/register',
-    element: <Register />,
+    element: <div>Register</div>,
     exact: true,
   },
   {

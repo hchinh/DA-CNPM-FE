@@ -1,12 +1,11 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { cartItemsCountSelector } from 'containers/Cart/selectors';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HeaderWrapper } from './styles';
 
 const NavBar = () => {
-  const dispatch = useDispatch();
   const [navBar, setNavBar] = useState(false);
 
   const cartItemsCount = useSelector(cartItemsCountSelector);
@@ -36,25 +35,9 @@ const NavBar = () => {
               <div className='cart__counter'>{!isNaN(cartItemsCount) ? cartItemsCount : 0}</div>
             </div>
           </Link>
-          {/* {!isLoggedIn && ( */}
           <div className='nav__login'>
             <Link to='/login'>Login</Link>
           </div>
-          {/* )}
-           {isLoggedIn && (
-             <li className='nav__itemsaccount'>
-               <img src='avatar.png' alt='Ảnh đại diện' className='img} />
-               <ul className='nav__itemsmenu'>
-                 <Link to='/profile'>
-                   <li className='nav__menuitems'>Profile</li>
-                 </Link>
-
-                 <li className='nav__menuitems' onClick={handleLogout}>
-                   Logout
-                 </li>
-               </ul>
-             </li>
-           )} */}
         </div>
       </div>
     </HeaderWrapper>

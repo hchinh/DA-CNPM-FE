@@ -11,6 +11,7 @@ import { ProductFilter } from './components/ProductFilter';
 import { ProductList } from './components/ProductList';
 import { Slider } from './components/Slider';
 import ProductWrapper from './style';
+
 export const Product = () => {
   const location = useLocation();
   const navigate = useNavigate();
