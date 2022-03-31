@@ -1,5 +1,5 @@
 import { ProductList } from 'containers/Product/components/ProductList';
-import { Product } from 'interfaces/product';
+import { Product } from 'interfaces';
 import React from 'react';
 import { ProductRelatedwrapper } from './styles';
 

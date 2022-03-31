@@ -1,4 +1,4 @@
-import { Category } from 'interfaces/category';
+import { Category } from 'interfaces';
 import { ListResponse } from './../interfaces/common';
 import axiosClient from './axiosClient';
 const categoryApi = {

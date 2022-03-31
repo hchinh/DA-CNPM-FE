@@ -1,3 +1,4 @@
+import LoginPage from 'containers/Auth/Login';
 import { Product } from 'containers/Product';
 import { ProductDetail } from 'containers/ProductDetail';
 import { Route } from 'react-router-dom';
@@ -11,7 +12,7 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   },
   {
     path: '/login',
-    element: <div>Login</div>,
+    element: <LoginPage />,
     exact: true,
   },
   {

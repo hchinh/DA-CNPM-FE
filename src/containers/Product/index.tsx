@@ -3,7 +3,7 @@ import productApi from 'api/productApi';
 import { Footer } from 'components/Footer';
 import NavBar from 'components/Header';
 import { Loading } from 'components/Loading';
-import { Product as ProductI } from 'interfaces/product';
+import { Product as ProductI } from 'interfaces';
 import queryString from 'query-string';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';

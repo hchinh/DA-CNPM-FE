@@ -1,4 +1,4 @@
-import { CartItem } from './../../interfaces/cartItem';
+import { CartItem } from 'interfaces';
 import { createSelector } from '@reduxjs/toolkit';
 
 const cartItemsSelector = (state: any) => state.cart.cartItems;
@@ -9,7 +9,7 @@ export const cartItemsCountSelector = createSelector(cartItemsSelector, (cartIte
 
 export const cartTotalSelector = createSelector(cartItemsSelector, (cartItems) =>
   cartItems.reduce(
-    (total: number, item: CartItem) => total + item.product.price* item?.quantity,
+    (total: number, item: CartItem) => total + item.product.price * item?.quantity,
     0
   )
 );

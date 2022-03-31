@@ -1,5 +1,5 @@
 import { Select } from 'antd';
-import { Brand } from 'interfaces/brand';
+import { Brand } from 'interfaces';
 import React from 'react';
 
 interface Props {

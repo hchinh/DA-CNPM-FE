@@ -3,9 +3,8 @@ import productApi from 'api/productApi';
 import { Footer } from 'components/Footer';
 import NavBar from 'components/Header';
 import { Loading } from 'components/Loading';
-import { Product } from 'interfaces/product';
+import { Product } from 'interfaces';
 import React, { useEffect, useState } from 'react';
-import { TailSpin } from 'react-loader-spinner';
 import { Link, useParams } from 'react-router-dom';
 import { ProductInfor } from './components/ProductInfo';
 import { ProductRelated } from './components/ProductRelated.tsx';
@@ -20,7 +19,7 @@ export const ProductDetail = () => {
   useEffect(() => {
     (async () => {
       if (id) {
-        const { data } = await productApi.get(Number(id));
+        const data = await productApi.getById(Number(id));
         setProduct(data);
 
         const productList = await productApi.getAll({

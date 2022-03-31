@@ -1,11 +1,21 @@
-import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from '../containers/Cart/cartSlice';
+import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import authReducer from 'redux/authSlice';
+import cartReducer from 'containers/Cart/cartSlice';
 
-const rootReducer = {
+const rootReducer = combineReducers({
+  auth: authReducer,
   cart: cartReducer,
-};
+});
 
-const store = configureStore({
+export const store = configureStore({
   reducer: rootReducer,
 });
-export default store;
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;

@@ -1,5 +1,5 @@
 import { Select } from 'antd';
-import { Category } from 'interfaces/category';
+import { Category } from 'interfaces';
 import React from 'react';
 
 interface Props {

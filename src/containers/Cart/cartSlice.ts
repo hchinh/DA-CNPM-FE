@@ -1,4 +1,4 @@
-import { CartItem } from './../../interfaces/cartItem';
+import { CartItem } from 'interfaces';
 import { createSlice } from '@reduxjs/toolkit';
 
 const cartSlice = createSlice({
@@ -36,6 +36,7 @@ const cartSlice = createSlice({
   },
 });
 
-const { actions, reducer } = cartSlice;
+const { actions } = cartSlice;
+const cartReducer = cartSlice.reducer;
 export const { addToCart, setQuantity, removeFromCart, resetCart } = actions;
-export default reducer;
+export default cartReducer;

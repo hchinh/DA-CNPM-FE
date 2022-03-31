@@ -1,4 +1,4 @@
-import { Brand } from 'interfaces/brand';
+import { Brand } from 'interfaces';
 import { ListResponse } from './../interfaces/common';
 import axiosClient from './axiosClient';
 const brandApi = {

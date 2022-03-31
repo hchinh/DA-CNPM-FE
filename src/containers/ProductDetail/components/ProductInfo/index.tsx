@@ -1,8 +1,7 @@
 import { Alert } from 'antd';
-import axiosClient from 'api/axiosClient';
 import categoryApi from 'api/categoryApi';
 import { ProductDetailWrapper } from 'containers/ProductDetail/styles';
-import { Product } from 'interfaces/product';
+import { Product } from 'interfaces';
 import React, { useEffect, useState } from 'react';
 import { formatPrice } from 'utils/common';
 import { AddToCartForm } from '../AddToCartForm';
