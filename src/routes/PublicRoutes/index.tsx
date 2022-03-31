@@ -1,20 +1,29 @@
+import { Login } from 'containers/Auth/components/Login';
+import { Register } from 'containers/Auth/components/Register';
+import { Product } from 'containers/Product';
+import { ProductDetail } from 'containers/ProductDetail';
 import { Route } from 'react-router-dom';
 import { TPublicRoutes } from 'routes/interface';
 
 export const PUBLIC_ROUTES: TPublicRoutes = [
   {
     path: '/',
-    element: <div>Home</div>,
+    element: <Product />,
     exact: true,
   },
   {
     path: '/login',
-    element: <div>Login</div>,
+    element: <Login />,
     exact: true,
   },
   {
     path: '/register',
-    element: <div>Register</div>,
+    element: <Register />,
+    exact: true,
+  },
+  {
+    path: '/product/:id',
+    element: <ProductDetail />,
     exact: true,
   },
 ];
