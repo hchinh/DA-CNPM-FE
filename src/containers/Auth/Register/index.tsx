@@ -20,10 +20,12 @@ const RegisterPage: FC = () => {
       notification.success({
         message: 'Register successfully! 😍😎',
       });
-      notification.info({
-        message: 'Login now!!',
-      });
-      navigate('/login');
+      setTimeout(() => {
+        notification.info({
+          message: 'Login now!!',
+        });
+        navigate('/login');
+      }, 3000);
     } catch (error: any) {
       notification.error({
         message: `${error.message} 😥😭`,
