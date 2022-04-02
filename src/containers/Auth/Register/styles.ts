@@ -46,14 +46,10 @@ export const RegisterPageWrapper = styled.div`
       margin-right: 4px;
     }
 
-    .login-form-forgot {
-      font-size: 16px;
-      letter-spacing: 0.15px;
-    }
-
     .ant-form-item-label {
       padding: 0 0 3px;
-
+      width: 160px;
+      text-align: left;
       & > label {
         font-size: 16px;
         color: ${({ theme }) => theme.text.formLabel};
@@ -63,7 +59,9 @@ export const RegisterPageWrapper = styled.div`
     .ant-input-affix-wrapper {
       border-radius: 5px;
     }
-
+    .ant-form-item-control {
+      min-width: 350px !important;
+    }
     .ant-btn-primary {
       border-radius: 5px;
 
@@ -73,7 +71,7 @@ export const RegisterPageWrapper = styled.div`
       }
     }
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1024px) {
     display: block;
 
     .banner {
@@ -85,6 +83,13 @@ export const RegisterPageWrapper = styled.div`
     }
     .container {
       margin: 30px;
+    }
+    .content {
+      padding: 0 10px;
+
+      .ant-form-item-control {
+        min-width: 300px !important;
+      }
     }
   }
 `;

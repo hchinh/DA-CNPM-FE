@@ -20,6 +20,9 @@ const RegisterPage: FC = () => {
       notification.success({
         message: 'Register successfully! 😍😎',
       });
+      notification.info({
+        message: 'Login now!!',
+      });
       navigate('/login');
     } catch (error: any) {
       notification.error({
@@ -46,8 +49,17 @@ const RegisterPage: FC = () => {
                 {
                   required: true,
                   message: 'Please input your nickname!',
-                  whitespace: true,
                 },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    const regex = /^\S*$/;
+                    if (regex.test(value)) {
+                      return Promise.resolve();
+                    }
+
+                    return Promise.reject(new Error("Username don't contain whitesapces"));
+                  },
+                }),
               ]}
             >
               <Input />
@@ -168,7 +180,7 @@ const RegisterPage: FC = () => {
             </Form.Item>
             <Form.Item style={{ textAlign: 'center' }}>
               If you have an account,
-              <Link to='/login'> login here</Link>
+              <Link to='/login'> Login here</Link>
             </Form.Item>
           </Form>
         </div>

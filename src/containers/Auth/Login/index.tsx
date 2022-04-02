@@ -95,7 +95,7 @@ const LoginPage: FC = () => {
             </Form.Item>
             <Form.Item style={{ textAlign: 'center' }}>
               If you don't have an account,
-              <Link to='/register'> register here</Link>
+              <Link to='/register'> Register here</Link>
             </Form.Item>
           </Form>
         </div>
