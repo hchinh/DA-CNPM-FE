@@ -9,7 +9,14 @@ export interface AuthState {
 }
 
 export const initialState: AuthState = {
-  currentUser: undefined,
+  currentUser:
+    localStorage.getItem('id') && localStorage.getItem('username') && localStorage.getItem('token')
+      ? {
+          id: String(localStorage.getItem('id')),
+          username: String(localStorage.getItem('username')),
+          email: String(localStorage.getItem('username')),
+        }
+      : undefined,
   loading: false,
 };
 
@@ -19,6 +26,7 @@ export const login = createAsyncThunk('/login', async (payload: LoginPayload, { 
   localStorage.setItem('token', response.token);
   localStorage.setItem('username', response.username);
   localStorage.setItem('id', response.id);
+  localStorage.setItem('email', response.email);
 
   return {
     id: response.id,
