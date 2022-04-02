@@ -1,4 +1,5 @@
 import LoginPage from 'containers/Auth/Login';
+import RegisterPage from 'containers/Auth/Register';
 import { Product } from 'containers/Product';
 import { ProductDetail } from 'containers/ProductDetail';
 import { Route } from 'react-router-dom';
@@ -17,7 +18,7 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   },
   {
     path: '/register',
-    element: <div>Register</div>,
+    element: <RegisterPage />,
     exact: true,
   },
   {

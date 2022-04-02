@@ -1,7 +1,8 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { Button, Form, Input, Space } from 'antd';
-import { useAppDispatch } from 'app/hook';
+import { Button, Form, Input, notification, Space } from 'antd';
+import useSelection from 'antd/lib/table/hooks/useSelection';
+import { useAppDispatch, useAppSelector } from 'app/hook';
 import { LoginPayload } from 'interfaces';
 import React, { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,14 +12,21 @@ import { LoginPageWrapper } from './styles';
 const LoginPage: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.auth.loading);
 
   const onFinish = async (values: LoginPayload) => {
     try {
       const resultAction = await dispatch(login(values));
       unwrapResult(resultAction);
+      notification.success({
+        message: 'Login successfully! 😍😎',
+      });
       navigate('/');
-    } catch (error) {
+    } catch (error: any) {
       console.log('Failed to login: ', error);
+      notification.error({
+        message: `${error.message} 😥😭`,
+      });
     }
   };
 
@@ -80,9 +88,14 @@ const LoginPage: FC = () => {
                 style={{ width: 360 }}
                 htmlType='submit'
                 className='login-form-button'
+                loading={loading}
               >
                 Log in
               </Button>
+            </Form.Item>
+            <Form.Item style={{ textAlign: 'center' }}>
+              If you don't have an account,
+              <Link to='/register'> register here</Link>
             </Form.Item>
           </Form>
         </div>

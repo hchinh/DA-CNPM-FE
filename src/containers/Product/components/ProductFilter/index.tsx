@@ -90,10 +90,14 @@ export const ProductFilter: React.FC<Props> = ({ onChange }) => {
         <FilterByPriceRange onChange={handlePriceRangeChange} />
         <SortBytPrice onChange={handleSortChange} />
         <SearchByName onChange={handleSearch} />
-        <FilterOutlined
-          style={{ fontSize: '25px', margin: '5px 10px 0 0', color: '#1890ff', cursor: 'pointer' }}
+        <Button
+          type='primary'
+          style={{ borderRadius: '8px', marginRight: '5px' }}
           onClick={handleOnFilterClick}
-        />
+        >
+          {' '}
+          Filter{' '}
+        </Button>
         {hiddenClearButton ? (
           ''
         ) : (

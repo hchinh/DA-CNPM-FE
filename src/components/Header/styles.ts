@@ -144,7 +144,7 @@ export const HeaderWrapper = styled.div`
     content: '';
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent var(--white-color) transparent;
+    border-color: transparent transparent #fff transparent;
     position: absolute;
     right: 8px;
     top: -20px;
@@ -164,6 +164,10 @@ export const HeaderWrapper = styled.div`
   .nav__menuitems:hover {
     background-color: #f8f8f8;
     cursor: pointer;
+    color: #3d95f8;
+  }
+  .logout: hover {
+    color: #ff0000;
   }
   .nav__login {
     display: flex;

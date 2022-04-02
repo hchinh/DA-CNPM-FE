@@ -4,7 +4,7 @@ import React from 'react';
 
 interface Props {
   data: Brand[];
-  onChange: (value:string)=>void  ;
+  onChange: (value: string) => void;
 }
 const { Option } = Select;
 export const FilterByBrand: React.FC<Props> = ({ data, onChange }) => {
@@ -15,7 +15,7 @@ export const FilterByBrand: React.FC<Props> = ({ data, onChange }) => {
   };
   return (
     <div>
-      <Select placeholder='Brand Type' onChange={handleOnChange}>
+      <Select showSearch placeholder='Brand Type' onChange={handleOnChange}>
         <Option value='' style={{ fontWeight: 'bold' }}>
           All
         </Option>
