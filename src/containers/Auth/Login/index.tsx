@@ -1,7 +1,6 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { Button, Form, Input, notification, Space } from 'antd';
-import useSelection from 'antd/lib/table/hooks/useSelection';
 import { useAppDispatch, useAppSelector } from 'app/hook';
 import { LoginPayload } from 'interfaces';
 import React, { FC } from 'react';
@@ -23,7 +22,6 @@ const LoginPage: FC = () => {
       });
       navigate('/');
     } catch (error: any) {
-      console.log('Failed to login: ', error);
       notification.error({
         message: `${error.message} 😥😭`,
       });

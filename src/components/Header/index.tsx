@@ -1,17 +1,30 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useAppDispatch, useAppSelector } from 'app/hook';
 import { cartItemsCountSelector } from 'containers/Cart/selectors';
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from 'redux/authSlice';
+import { checkRefreshToken, logout } from 'redux/authSlice';
 import { HeaderWrapper } from './styles';
 
 const NavBar = () => {
   const [navBar, setNavBar] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const cartItemsCount = useSelector(cartItemsCountSelector);
-  const loggedInUser = useSelector((state: any) => state.auth.currentUser);
+
+  useEffect(() => {
+    (async () => {
+      const refreshToken = localStorage.getItem('refreshToken');
+      if (refreshToken) {
+        const resultAction = await dispatch(checkRefreshToken({ refreshToken }));
+        unwrapResult(resultAction);
+      }
+    })();
+  }, []);
+
+  const loggedInUser = useAppSelector((state) => state.auth.currentUser);
   const isLoggedIn = !!loggedInUser?.id;
 
   const changeBackgroundColor = () => {
@@ -21,9 +34,11 @@ const NavBar = () => {
       setNavBar(false);
     }
   };
-  const handleLogout = () => {
-    const action = logout();
-    dispatch(action);
+  const handleLogout = async () => {
+    try {
+      const resultAction = await dispatch(logout());
+      unwrapResult(resultAction);
+    } catch (error) {}
   };
 
   window.addEventListener('scroll', changeBackgroundColor);

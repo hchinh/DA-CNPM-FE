@@ -13,3 +13,13 @@ export interface RegisterPayLoad {
   address?: string;
   profilePicture?: string;
 }
+
+export interface RefreshTokenPayLoad {
+  refreshToken: string;
+}
+
+export interface LogoutPayLoad {
+  refreshToken: string;
+  token: string;
+  userId: number;
+}

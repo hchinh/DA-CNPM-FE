@@ -14,7 +14,6 @@ const RegisterPage: FC = () => {
   const onFinish = async (values: any) => {
     try {
       const { confirm, ...newValues } = values;
-      console.log(newValues);
       const resultAction = await dispatch(register(newValues));
       unwrapResult(resultAction);
       notification.success({

@@ -9,9 +9,18 @@ export interface AuthResponse {
   username: string;
   email: string;
   token: string;
+  refreshToken: string;
   type: 'Bearer';
   role: ROLES;
 }
+
+export type RefreshTokenRespone =
+  | AuthResponse
+  | {
+      message: string;
+      status: string;
+      timestamp: string;
+    };
 
 export interface PaginationParams {
   page: number;

@@ -232,7 +232,6 @@ export const ProductDetailWrapper = styled.div`
     left: 0px;
     width: 100%;
     background-color: rgb(255, 255, 255);
-    box-shadow: rgb(0 0 0 / 6%) 0px 1px 2px;
     transition: all 0.3s ease 0s;
   }
   .header {
@@ -315,7 +314,7 @@ export const ProductDetailWrapper = styled.div`
   }
   .nav__itemsmenu {
     position: absolute;
-    background-color: #fff;
+    background-color: #ccc;
     top: 82%;
     right: 29px;
     border-radius: 2px;
@@ -325,7 +324,6 @@ export const ProductDetailWrapper = styled.div`
     list-style: none;
     display: none;
     animation: nav__notifyapp ease-in 0.25s;
-    box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.1);
   }
   .nav__itemsmenu a:visited {
     color: black;
@@ -343,7 +341,7 @@ export const ProductDetailWrapper = styled.div`
     content: '';
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent var(--white-color) transparent;
+    border-color: transparent transparent #ccc transparent;
     position: absolute;
     right: 8px;
     top: -20px;
@@ -361,7 +359,8 @@ export const ProductDetailWrapper = styled.div`
     list-style: none;
   }
   .nav__menuitems:hover {
-    background-color: #f8f8f8;
+    opancity: 0.75;
+    background-color: #ccc;
     cursor: pointer;
   }
   .nav__login {

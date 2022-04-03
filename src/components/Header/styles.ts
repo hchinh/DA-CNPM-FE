@@ -14,12 +14,10 @@ export const HeaderWrapper = styled.div`
     left: 0px;
     width: 100%;
     background-color: transparent;
-    /* box-shadow: rgb(0 0 0 / 6%) 0px 1px 2px; */
     transition: all 0.3s ease 0s;
 
     &.active {
       background-color: rgb(255, 255, 255);
-      box-shadow: rgb(0 0 0 / 6%) 0px 1px 2px;
     }
   }
   .header {
@@ -126,7 +124,6 @@ export const HeaderWrapper = styled.div`
     list-style: none;
     display: none;
     animation: nav__notifyapp ease-in 0.25s;
-    box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.1);
   }
   .nav__itemsmenu a:visited {
     color: black;
