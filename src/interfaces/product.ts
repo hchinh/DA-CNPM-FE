@@ -26,11 +26,11 @@ export interface Category {
 }
 
 export interface Brand {
-  id?: Number;
-  createDate?: String;
-  modifiedDate?: String;
-  createdBy?: String;
-  name?: String;
-  description?: String;
-  thumbnail?: String;
+  id?: number;
+  createDate?: string;
+  modifiedDate?: string;
+  createdBy?: string;
+  name?: string;
+  description?: string;
+  thumbnail?: string;
 }

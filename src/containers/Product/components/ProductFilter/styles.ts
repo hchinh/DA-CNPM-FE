@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 export default styled.div`
+  .hiddenClearButton.ant-btn-dangerous.ant-btn-primary:hover,
+  .ant-btn-dangerous.ant-btn-primary:focus {
+    color: #fff;
+    border-color: #ff4d4f;
+    background: #ff4d4f;
+  }
+
   .product_filters {
     display: flex;
     flex-flow: row nowrap;

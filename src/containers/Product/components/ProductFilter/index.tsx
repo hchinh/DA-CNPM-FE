@@ -90,18 +90,22 @@ export const ProductFilter: React.FC<Props> = ({ onChange }) => {
         <FilterByPriceRange onChange={handlePriceRangeChange} />
         <SortBytPrice onChange={handleSortChange} />
         <SearchByName onChange={handleSearch} />
-        <Button
-          type='primary'
-          style={{ borderRadius: '8px', marginRight: '5px' }}
-          onClick={handleOnFilterClick}
-        >
+        <Button type='primary' style={{ marginRight: '5px' }} onClick={handleOnFilterClick}>
           {' '}
           Filter{' '}
         </Button>
         {hiddenClearButton ? (
-          ''
+          <Button
+            type='primary'
+            className="hiddenClearButton"
+            danger
+            onClick={handleClearClick}
+            style={{ opacity: '0.5', cursor: 'context-menu' }}
+          >
+            Clear
+          </Button>
         ) : (
-          <Button type='primary' danger onClick={handleClearClick} style={{ borderRadius: '8px' }}>
+          <Button type='primary' danger onClick={handleClearClick}>
             Clear
           </Button>
         )}

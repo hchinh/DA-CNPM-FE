@@ -40,6 +40,15 @@ const authSlice = createSlice({
     builder.addCase(checkRefreshToken.fulfilled, (state, action) => {
       state.currentUser = action.payload;
     });
+    builder.addCase(checkRefreshToken.rejected, (state, action) => {
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('token');
+      localStorage.removeItem('id');
+      localStorage.removeItem('username');
+      localStorage.removeItem('email');
+
+      state.currentUser = undefined;
+    });
 
     builder.addCase(logout.fulfilled, (state) => {
       localStorage.removeItem('refreshToken');
@@ -100,7 +109,14 @@ export const checkRefreshToken = createAsyncThunk(
         username: response.username,
         email: response.email,
       };
-    } else return undefined;
+    } else {
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('token');
+      localStorage.removeItem('id');
+      localStorage.removeItem('username');
+      localStorage.removeItem('email');
+      return undefined;
+    }
   }
 );
 
