@@ -1,7 +1,38 @@
+export enum ROLES {
+  EMPLOYEE = 'ROLE_EMPLOYEE',
+  ADMIN = 'ROLE_ADMIN',
+  USER = 'ROLE_USER',
+}
+
+export interface AuthResponse {
+  id: string;
+  username: string;
+  email: string;
+  token: string;
+  refreshToken: string;
+  type: 'Bearer';
+  role: ROLES;
+}
+
+export type RefreshTokenRespone =
+  | AuthResponse
+  | {
+      message: string;
+      status: string;
+      timestamp: string;
+    };
+
 export interface PaginationParams {
-  limit: number;
   page: number;
+  limit: number;
   total: number;
+}
+
+export interface ApiResponse<T> {
+  content: T[];
+  number: number;
+  size: number;
+  totalElements: number;
 }
 
 export interface ListResponse<T> {
@@ -10,10 +41,9 @@ export interface ListResponse<T> {
 }
 
 export interface ListParams {
-  _page?: number;
-  _limit?: number;
-  _sort?: string;
-  _order?: 'asc' | 'desc';
+  page?: number;
+  limit?: number;
+  sort?: string;
 
   [key: string]: any;
 }

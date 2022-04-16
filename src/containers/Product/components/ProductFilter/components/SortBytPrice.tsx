@@ -13,7 +13,7 @@ export const SortBytPrice: React.FC<Props> = ({ onChange }) => {
   };
   return (
     <div>
-      <Select placeholder='Sort By Price' onChange={handleOnChange}>
+      <Select showSearch placeholder='Sort By Price' onChange={handleOnChange}>
         <Option value='price,ASC' style={{ fontWeight: 'bold' }}>
           Lowest to Highest
         </Option>

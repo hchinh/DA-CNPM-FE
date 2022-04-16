@@ -1,4 +1,4 @@
-import { Product } from 'interfaces/product';
+import { Product } from 'interfaces';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductItemWrapper from 'containers/Product/style';

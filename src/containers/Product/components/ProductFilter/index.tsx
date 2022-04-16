@@ -2,8 +2,7 @@ import { FilterOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import brandApi from 'api/brandApi';
 import categoryApi from 'api/categoryApi';
-import { Brand } from 'interfaces/brand';
-import { Category } from 'interfaces/category';
+import { Brand, Category } from 'interfaces';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FilterByBrand } from './components/FilterByBrand';
@@ -28,9 +27,9 @@ export const ProductFilter: React.FC<Props> = ({ onChange }) => {
   useEffect(() => {
     (async () => {
       const categoryData = await categoryApi.getAll();
-      setCategoryList(categoryData.data);
+      setCategoryList(categoryData);
       const brandData = await brandApi.getAll();
-      setBrandList(brandData.data);
+      setBrandList(brandData);
       if (location.search !== '') setHiddenClearButton(false);
     })();
   }, []);
@@ -91,14 +90,22 @@ export const ProductFilter: React.FC<Props> = ({ onChange }) => {
         <FilterByPriceRange onChange={handlePriceRangeChange} />
         <SortBytPrice onChange={handleSortChange} />
         <SearchByName onChange={handleSearch} />
-        <FilterOutlined
-          style={{ fontSize: '25px', margin: '5px 10px 0 0', color: '#1890ff', cursor: 'pointer' }}
-          onClick={handleOnFilterClick}
-        />
+        <Button type='primary' style={{ marginRight: '5px' }} onClick={handleOnFilterClick}>
+          {' '}
+          Filter{' '}
+        </Button>
         {hiddenClearButton ? (
-          ''
+          <Button
+            type='primary'
+            className='hiddenClearButton'
+            danger
+            onClick={handleClearClick}
+            style={{ opacity: '0.5', cursor: 'context-menu' }}
+          >
+            Clear
+          </Button>
         ) : (
-          <Button type='primary' danger onClick={handleClearClick} style={{ borderRadius: '8px' }}>
+          <Button type='primary' danger onClick={handleClearClick}>
             Clear
           </Button>
         )}

@@ -1,17 +1,8 @@
-import { Category } from 'interfaces/category';
-import { ListResponse } from './../interfaces/common';
+import { Category } from 'interfaces';
 import axiosClient from './axiosClient';
 const categoryApi = {
-  async getAll(): Promise<ListResponse<Category>> {
-    const data: any = await axiosClient.get('/categories');
-    return {
-      data,
-      pagination: {
-        page: 1,
-        limit: 2,
-        total: 1,
-      },
-    };
+  async getAll(): Promise<Category[]> {
+    return await axiosClient.get('/categories');
   },
   async get(id: number) {
     const url = `/categories/${id}`;

@@ -12,7 +12,7 @@ export const FilterByPriceRange: React.FC<Props> = ({ onChange }) => {
   };
   return (
     <div>
-      <Select placeholder='Price Range' onChange={handleOnChange} dropdownMatchSelectWidth={false}>
+      <Select showSearch placeholder='Price Range' onChange={handleOnChange} dropdownMatchSelectWidth={false}>
         <Option
           value={JSON.stringify({ price_gte: '', price_lte: '' })}
           style={{ fontWeight: 'bold' }}

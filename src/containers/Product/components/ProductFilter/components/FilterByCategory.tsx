@@ -1,5 +1,5 @@
 import { Select } from 'antd';
-import { Category } from 'interfaces/category';
+import { Category } from 'interfaces';
 import React from 'react';
 
 interface Props {
@@ -15,7 +15,7 @@ export const FilterByCategory: React.FC<Props> = ({ data, onChange }) => {
   };
   return (
     <div>
-      <Select placeholder='Category Type' onChange={handleOnChange}>
+      <Select showSearch placeholder='Category Type' onChange={handleOnChange}>
         <Option value='' style={{ fontWeight: 'bold' }}>
           All
         </Option>

@@ -1,9 +1,9 @@
 export interface Product {
   id?: number;
-  createdDate?: String | null;
-  modifiedDate?: String | null;
-  createdBy?: String | null;
-  modifiedBy?: String | null;
+  createdDate?: string;
+  modifiedDate?: string;
+  createdBy?: string;
+  modifiedBy?: string;
   name: string;
   brand?: string;
   shortDescription?: string;
@@ -12,4 +12,25 @@ export interface Product {
   unitInStock: number;
   thumbnail?: string;
   categoryId: number;
+}
+
+export interface Category {
+  id?: number;
+  createdDate?: string;
+  modifiedDate?: string;
+  createdBy?: string;
+  modifiedBy?: string;
+  name: string;
+  sescription?: string;
+  thumbnail?: string;
+}
+
+export interface Brand {
+  id?: number;
+  createDate?: string;
+  modifiedDate?: string;
+  createdBy?: string;
+  name?: string;
+  description?: string;
+  thumbnail?: string;
 }

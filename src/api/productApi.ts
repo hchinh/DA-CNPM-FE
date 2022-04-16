@@ -1,25 +1,23 @@
-import { Product } from 'interfaces/product';
-import queryString from 'query-string';
-import { ListResponse } from './../interfaces/common';
+import { ApiResponse, ListParams, ListResponse, Product } from 'interfaces';
 import axiosClient from './axiosClient';
 
 const productApi = {
-  async getAll(params: any): Promise<ListResponse<Product>> {
-    const query: string = queryString.stringify(params);
-    const data: any = await axiosClient.get(`/products?${query}`);
+  async getAll(params: ListParams): Promise<ListResponse<Product>> {
+    const data: ApiResponse<Product> = await axiosClient.get('/products', { params });
+
     return {
       data: data.content,
       pagination: {
-        page: params?.page + 1,
-        limit: params?.limit,
+        page: data.number,
+        limit: data.size,
         total: data.totalElements,
       },
     };
   },
-  async get(id: number) {
+
+  getById(id: number): Promise<Product> {
     const url = `/products/${id}`;
-    const data: Product = await axiosClient.get(url);
-    return { data };
+    return axiosClient.get(url);
   },
 };
 export default productApi;
