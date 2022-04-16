@@ -27,9 +27,9 @@ export const ProductFilter: React.FC<Props> = ({ onChange }) => {
   useEffect(() => {
     (async () => {
       const categoryData = await categoryApi.getAll();
-      setCategoryList(categoryData.data);
+      setCategoryList(categoryData);
       const brandData = await brandApi.getAll();
-      setBrandList(brandData.data);
+      setBrandList(brandData);
       if (location.search !== '') setHiddenClearButton(false);
     })();
   }, []);
@@ -97,7 +97,7 @@ export const ProductFilter: React.FC<Props> = ({ onChange }) => {
         {hiddenClearButton ? (
           <Button
             type='primary'
-            className="hiddenClearButton"
+            className='hiddenClearButton'
             danger
             onClick={handleClearClick}
             style={{ opacity: '0.5', cursor: 'context-menu' }}
