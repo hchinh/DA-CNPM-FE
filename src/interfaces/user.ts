@@ -1,5 +1,15 @@
 export interface User {
-  id: string;
-  username: string;
+  id: number;
+  createdDate: string;
+  modifiedDate: string;
+  createdBy: string;
+  modifiedBy: string;
+  userName: string;
+  name: string;
+  address: string;
+  phoneNumber: string;
   email: string;
+  gender: number;
+  profilePicture: string;
+  enabled: number;
 }

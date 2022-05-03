@@ -4,7 +4,7 @@ import { RootState } from 'app/store';
 import { LoginPayload, RefreshTokenPayLoad, RegisterPayLoad, User } from 'interfaces';
 
 export interface AuthState {
-  currentUser?: User;
+  currentUser?: Pick<User, 'id' | 'email' | 'userName'>;
   loading: boolean;
 }
 
@@ -68,12 +68,12 @@ export const login = createAsyncThunk('/login', async (payload: LoginPayload, { 
   localStorage.setItem('token', response.token);
   localStorage.setItem('refreshToken', response.refreshToken);
   localStorage.setItem('username', response.username);
-  localStorage.setItem('id', response.id);
+  localStorage.setItem('id', String(response.id));
   localStorage.setItem('email', response.email);
 
   return {
     id: response.id,
-    username: response.username,
+    userName: response.username,
     email: response.email,
   };
 });
@@ -106,7 +106,7 @@ export const checkRefreshToken = createAsyncThunk(
 
       return {
         id: response.id,
-        username: response.username,
+        userName: response.username,
         email: response.email,
       };
     } else {

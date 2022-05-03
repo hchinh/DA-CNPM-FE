@@ -1,6 +1,6 @@
 import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import authReducer from 'redux/authSlice';
-import cartReducer from 'containers/Cart/cartSlice';
+import cartReducer from 'redux/cartSlice';
 
 const rootReducer = combineReducers({
   auth: authReducer,

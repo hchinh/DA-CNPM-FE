@@ -2,7 +2,11 @@ import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { Form, InputNumber } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { QuantityFieldWrapper } from './styles';
+interface Props {
+  form: any;
+}
 
 type ValidateStatus = Parameters<typeof Form.Item>[0]['validateStatus'];
 
@@ -29,7 +33,7 @@ function validateNumber(number: number): {
   };
 }
 
-export const QuantityField = () => {
+export const QuantityField: React.FC<Props> = ({ form }) => {
   const [number, setNumber] = useState<{
     value: number;
     validateStatus?: ValidateStatus;
@@ -38,35 +42,38 @@ export const QuantityField = () => {
     value: 1,
   });
 
-  const [form] = Form.useForm();
+  const {
+    formState: { errors },
+    setValue,
+  } = form;
 
   const onNumberChange = (value: number) => {
     setNumber({
       ...validateNumber(value),
       value,
     });
+    setValue('quantity', value);
   };
 
   const handleMinusIconClick = () => {
     const newNumber = number.value - 1;
     setNumber({ ...validateNumber(newNumber), value: newNumber });
-    form.setFieldsValue({ inputnumber: number.value });
+    setValue('quantity', newNumber);
   };
 
   const handlePlusIconClick = () => {
     const newNumber = number.value + 1;
     setNumber({ ...validateNumber(newNumber), value: newNumber });
-    form.setFieldsValue({ inputnumber: number.value });
+    setValue('quantity', newNumber);
   };
 
   const onFinish = (e: any) => {
     if (e.key === 'Enter') e.preventDefault();
   };
 
-  console.log(number.value);
   return (
     <QuantityFieldWrapper>
-      <Form onKeyDown={onFinish} form={form} className='quantity_form'>
+      <Form onKeyDown={onFinish} className='quantity_form'>
         <MinusCircleOutlined className='minus-btn' onClick={handleMinusIconClick} />
 
         <Form.Item
@@ -75,7 +82,7 @@ export const QuantityField = () => {
           help={number.errorMsg}
         >
           <InputNumber
-            name='inputnumber'
+            name='quantity'
             type='number'
             onChange={onNumberChange}
             value={number.value}
