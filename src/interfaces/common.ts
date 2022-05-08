@@ -5,7 +5,7 @@ export enum ROLES {
 }
 
 export interface AuthResponse {
-  id: string;
+  id: number;
   username: string;
   email: string;
   token: string;

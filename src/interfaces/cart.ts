@@ -1,27 +1,25 @@
-import { Product } from './product';
-import { User } from './user';
+export interface CartItem {
+  id: number;
+  createdDate: string;
+  modifiedDate: string;
+  createdBy: string;
+  modifiedBy: string;
+  customerId: number;
+  productId: number;
+  quantity: number;
+  salePrice: number;
+  productName: string;
+  productThumbnail: string;
+}
 
-export interface Cart {
+export interface CartPayLoad {
   id?: number;
   createdDate?: string;
   modifiedDate?: string;
   createdBy?: string;
   modifiedBy?: string;
-  user?: User;
-  note?: string;
-  totalCost?: number;
-  address?: string;
-  cartItems: CartItem[];
-}
-
-export interface CartItem {
-  id: number;
-  createdDate?: string;
-  modifiedDate?: string;
-  createdBy?: string;
-  modifiedBy?: string;
-  cart: Cart;
-  product: Product;
+  customerId: number;
+  productId: number;
   quantity: number;
-  status: number;
+  salePrice: number;
 }

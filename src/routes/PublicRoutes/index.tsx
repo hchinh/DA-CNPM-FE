@@ -1,5 +1,6 @@
 import LoginPage from 'containers/Auth/Login';
 import RegisterPage from 'containers/Auth/Register';
+import { Cart } from 'containers/Cart';
 import { Product } from 'containers/Product';
 import { ProductDetail } from 'containers/ProductDetail';
 import { Route } from 'react-router-dom';
@@ -9,6 +10,11 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   {
     path: '/',
     element: <Product />,
+    exact: true,
+  },
+  {
+    path: '/product/:id',
+    element: <ProductDetail />,
     exact: true,
   },
   {
@@ -22,8 +28,8 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
     exact: true,
   },
   {
-    path: '/product/:id',
-    element: <ProductDetail />,
+    path: '/cart',
+    element: <Cart />,
     exact: true,
   },
 ];
