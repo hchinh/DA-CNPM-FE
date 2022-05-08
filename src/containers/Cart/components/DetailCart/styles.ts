@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const DetailCartStyles = styled.div`
- 
   .ant-input-number-handler-wrap {
     display: none;
   }
@@ -13,6 +12,7 @@ export const DetailCartStyles = styled.div`
     margin: 15px;
     display: flex;
     align-items: center;
+    border-radius: 5px;
   }
   .checkbox {
     padding: 0 5px;

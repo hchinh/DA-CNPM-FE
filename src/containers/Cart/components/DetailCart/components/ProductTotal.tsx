@@ -1,7 +1,5 @@
 import { DeleteOutlined } from '@ant-design/icons';
 import { Checkbox, Col, Popconfirm, Row } from 'antd';
-import { confirmDelete } from 'containers/Cart';
-import { CartItem } from 'interfaces';
 import React from 'react';
 import { DetailCartStyles } from '../styles';
 interface Props {

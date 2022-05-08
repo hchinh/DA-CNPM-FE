@@ -1,11 +1,10 @@
-import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 import { Checkbox, Col, Image, Popconfirm, Row } from 'antd';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { useAppDispatch, useAppSelector } from 'app/hook';
-import { confirmDelete } from 'containers/Cart';
 import { CartItem, CartPayLoad } from 'interfaces';
 import React, { useEffect, useState } from 'react';
-import { setLoading } from 'redux/authSlice';
+import { setSelectedList } from 'redux/cartSlice';
 import { formatPrice } from 'utils/common';
 import { ProductQuantity } from './components/ProductQuantity';
 import { ProductToTal } from './components/ProductTotal';
@@ -56,6 +55,13 @@ export const DetailCart: React.FC<Props> = ({ cartList, onChange, onRemove }) =>
       return total;
     }, 0);
     setTotalSelected(total);
+
+    const checkedCartList = checkedList.map((item) => {
+      const idx = cartList.findIndex((cartItem) => cartItem.id === item);
+      return cartList[idx];
+    });
+    const action = setSelectedList(checkedCartList);
+    dispatch(action);
   }, [checkedList, loading === true]);
 
   return (

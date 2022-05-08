@@ -1,6 +1,5 @@
-import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { Col, Modal, Row } from 'antd';
+import { Col, Row, Skeleton } from 'antd';
 import { userApi } from 'api/userApi';
 import { useAppDispatch, useAppSelector } from 'app/hook';
 import { Footer } from 'components/Footer';
@@ -12,31 +11,19 @@ import { DetailCart } from './components/DetailCart';
 import { TotalCost } from './components/TotalCost';
 import { CartStyles } from './styles';
 
-export const confirmDelete = () => {
-  let isConfirmed = false;
-  Modal.confirm({
-    title: 'Xóa sản phẩm',
-    centered: true,
-    icon: <ExclamationCircleOutlined />,
-    content: 'Bạn có muốn xóa sản phẩm đang chọn?',
-    okText: 'Xác nhận',
-    cancelText: 'Hủy',
-    onOk: () => {
-      isConfirmed = true;
-    },
-    onCancel: () => {
-      isConfirmed = false;
-    },
-  });
-  return isConfirmed;
-};
-
 export const Cart = () => {
   const dispatch = useAppDispatch();
   const loggedInUser = useAppSelector((state) => state.auth.currentUser);
   const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState(true);
 
   const cartList = useAppSelector((state) => state.cart.cartItems);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -65,22 +52,54 @@ export const Cart = () => {
     }
     unwrapResult(resultAction);
   };
-  const handleCheckout = () => {};
+
   return (
     <CartStyles>
       <NavBar />
       <div className='container'>
         <h1>Giỏ Hàng</h1>
-        <div>
-          <Row>
-            <Col span={16}>
-              <DetailCart cartList={cartList} onChange={handleOnChange} onRemove={handleOnRemove} />
-            </Col>
-            <Col span={8}>
-              <TotalCost user={user} handleCheckout={handleCheckout} />
-            </Col>
-          </Row>
-        </div>
+        {!loading ? (
+          cartList.length ? (
+            <div>
+              <Row>
+                <Col span={18}>
+                  <DetailCart
+                    cartList={cartList}
+                    onChange={handleOnChange}
+                    onRemove={handleOnRemove}
+                  />
+                </Col>
+                <Col span={6}>
+                  <TotalCost user={user} />
+                </Col>
+              </Row>
+            </div>
+          ) : (
+            <div className='cart-detail-empty'>
+              <img
+                src='https://salt.tikicdn.com/desktop/img/mascot@2x.png'
+                alt=''
+                style={{ width: '200px' }}
+              />
+              <p style={{ marginTop: '10px' }}>Không có sản phẩm trong giỏ hàng của bạn</p>
+              <div style={{ paddingTop: '10px' }}>
+                <a href='/'>Tiếp tục mua sắm</a>
+              </div>
+            </div>
+          )
+        ) : (
+          <div>
+            <Row>
+              <Col span={15} style={{ marginRight: '20px' }}>
+                <Skeleton />
+                <Skeleton />
+              </Col>
+              <Col span={8}>
+                <Skeleton />
+              </Col>
+            </Row>
+          </div>
+        )}
       </div>
       <Footer />
     </CartStyles>

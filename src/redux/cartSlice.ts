@@ -6,11 +6,13 @@ import { CartPayLoad } from './../interfaces/cart';
 
 export interface CartState {
   cartItems: CartItem[];
+  selectedList: CartItem[];
   loading: boolean;
 }
 
 export const initialState: CartState = {
   cartItems: [],
+  selectedList: [],
   loading: false,
 };
 
@@ -20,6 +22,10 @@ const cartSlice = createSlice({
   reducers: {
     setLoading: (state) => {
       state.loading = true;
+    },
+    setSelectedList: (state, action) => {
+      const list = action.payload;
+      state.selectedList = list;
     },
   },
   extraReducers: (builder) => {
@@ -68,7 +74,7 @@ export const removeCartItems = createAsyncThunk(
   }
 );
 
-export const { setLoading } = cartSlice.actions;
+export const { setLoading, setSelectedList } = cartSlice.actions;
 
 export const cartSelector = (state: RootState) => state.cart;
 
