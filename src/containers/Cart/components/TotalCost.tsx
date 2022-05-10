@@ -47,7 +47,7 @@ export const TotalCost: React.FC<Props> = ({ user }) => {
         <div className='total-cost-item customer-info'>
           <span className='block_header-title'>Giao tới</span>
           <div className='customer-info-detail'>
-            <span className='customer-name'>{user?.name}</span>
+            <span className='customer-name'>{user?.userName}</span>
             <i></i>
             <span className='customer-phone'>{user?.phoneNumber}</span>
           </div>
