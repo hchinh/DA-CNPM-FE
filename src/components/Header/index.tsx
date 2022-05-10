@@ -4,7 +4,6 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import { useAppDispatch, useAppSelector } from 'app/hook';
 import { cartItemsCountSelector } from 'containers/Cart/selectors';
 import React, { useEffect, useState } from 'react';
-import { get } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { checkRefreshToken, logout } from 'redux/authSlice';
