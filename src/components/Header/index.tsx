@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useAppDispatch, useAppSelector } from 'app/hook';
@@ -35,7 +36,7 @@ const NavBar = () => {
         unwrapResult(resultAction);
       }
     })();
-  }, [loading === true]);
+  }, [loading]);
 
   const loggedInUser = useAppSelector((state) => state.auth.currentUser);
   const isLoggedIn = !!loggedInUser?.id;

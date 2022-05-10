@@ -15,15 +15,8 @@ export const Cart = () => {
   const dispatch = useAppDispatch();
   const loggedInUser = useAppSelector((state) => state.auth.currentUser);
   const [user, setUser] = useState<User>();
-  const [loading, setLoading] = useState(true);
-
   const cartList = useAppSelector((state) => state.cart.cartItems);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+  const start = useAppSelector((state) => state.cart.start);
 
   useEffect(() => {
     (async () => {
@@ -58,7 +51,7 @@ export const Cart = () => {
       <NavBar />
       <div className='container'>
         <h1>Giỏ Hàng</h1>
-        {!loading ? (
+        {!start ? (
           cartList.length ? (
             <div>
               <Row>

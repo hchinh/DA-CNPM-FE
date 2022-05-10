@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { DeleteOutlined } from '@ant-design/icons';
 import { Checkbox, Col, Image, Popconfirm, Row } from 'antd';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';
@@ -62,7 +63,7 @@ export const DetailCart: React.FC<Props> = ({ cartList, onChange, onRemove }) =>
     });
     const action = setSelectedList(checkedCartList);
     dispatch(action);
-  }, [checkedList, loading === true]);
+  }, [checkedList, loading]);
 
   return (
     <DetailCartStyles>
