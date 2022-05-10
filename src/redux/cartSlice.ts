@@ -8,12 +8,14 @@ export interface CartState {
   cartItems: CartItem[];
   selectedList: CartItem[];
   loading: boolean;
+  start: boolean;
 }
 
 export const initialState: CartState = {
   cartItems: [],
   selectedList: [],
   loading: false,
+  start: true,
 };
 
 const cartSlice = createSlice({
@@ -32,10 +34,12 @@ const cartSlice = createSlice({
     builder.addCase(getCart.fulfilled, (state, action) => {
       state.cartItems = action.payload;
       state.loading = false;
+      state.start = false;
     });
     builder.addCase(getCart.rejected, (state) => {
       state.cartItems = [];
       state.loading = false;
+      state.start = false;
     });
   },
 });
