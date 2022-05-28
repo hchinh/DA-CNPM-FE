@@ -1,3 +1,4 @@
+
 export enum Status {
   PENDING,
   COMPLETED,
@@ -26,16 +27,33 @@ export interface PaymentPayload {
   paymentMethod: PaymentMethod;
 }
 
-export interface OrderItem {
+export interface OrderCartItem {
   id: number;
-  createdDate: string;
-  modifiedDate: string;
-  createdBy: string;
-  modifiedBy: string;
+  createdDate?: string;
+  modifiedDate?: string;
+  createdBy?: string;
+  modifiedBy?: string;
   quantity: number;
   salePrice: number;
-  customerId: number;
+  cardId: number;
   productId: number;
   productName: string;
   productThumbnail: string;
 }
+
+export interface Order {
+  id: number;
+  createdDate?: string;
+  modifiedDate?: string;
+  createdBy?: string;
+  modifiedBy?: string;
+  note?: string;
+  totalCost: number;
+  address: string;
+  status: Status;
+  paymentMethod: PaymentMethod;
+  customerName: string;
+  cartItems: OrderCartItem[];
+  customerId: number;
+}
+

@@ -1,6 +1,7 @@
 import LoginPage from 'containers/Auth/Login';
 import RegisterPage from 'containers/Auth/Register';
 import { Cart } from 'containers/Cart';
+import { OrderPage } from 'containers/Order';
 import { Payment } from 'containers/Payment';
 import { Product } from 'containers/Product';
 import { ProductDetail } from 'containers/ProductDetail';
@@ -36,6 +37,11 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   {
     path: '/checkout/payment',
     element: <Payment />,
+    exact: true,
+  },
+  {
+    path: '/order',
+    element: <OrderPage />,
     exact: true,
   },
 ];

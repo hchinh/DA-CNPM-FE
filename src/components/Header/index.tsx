@@ -72,6 +72,7 @@ const NavBar = () => {
                   </i>
                 </div>
               </Link>
+
               <div className='nav__login'>
                 <Link to='/login'>Login</Link>
               </div>
@@ -92,6 +93,9 @@ const NavBar = () => {
                 <ul className='nav__itemsmenu'>
                   <Link to='/profile'>
                     <li className='nav__menuitems'>Profile</li>
+                  </Link>
+                  <Link to='/order'>
+                    <li className='nav__menuitems'>Order</li>
                   </Link>
 
                   <li className='nav__menuitems logout' onClick={handleLogout}>
