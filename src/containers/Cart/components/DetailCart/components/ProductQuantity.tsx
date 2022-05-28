@@ -1,4 +1,4 @@
-import { DeleteOutlined, MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { InputNumber, Popconfirm } from 'antd';
 import { useAppDispatch } from 'app/hook';
