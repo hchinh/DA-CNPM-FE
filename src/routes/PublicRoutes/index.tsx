@@ -1,6 +1,7 @@
 import LoginPage from 'containers/Auth/Login';
 import RegisterPage from 'containers/Auth/Register';
 import { Cart } from 'containers/Cart';
+import { Payment } from 'containers/Payment';
 import { Product } from 'containers/Product';
 import { ProductDetail } from 'containers/ProductDetail';
 import { Route } from 'react-router-dom';
@@ -30,6 +31,11 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   {
     path: '/cart',
     element: <Cart />,
+    exact: true,
+  },
+  {
+    path: '/checkout/payment',
+    element: <Payment />,
     exact: true,
   },
 ];

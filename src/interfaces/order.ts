@@ -1,6 +1,4 @@
-import { number } from 'yup';
-
-enum OrderStatus {
+export enum Status {
   PENDING,
   COMPLETED,
   REFUNDED,
@@ -9,23 +7,22 @@ enum OrderStatus {
   PAID,
 }
 
-enum PaymentMethod {
+export enum PaymentMethod {
   CASH,
   PAYPAL,
 }
 
-export interface Order {
-  id: number;
+export interface PaymentPayload {
+  id?: number;
   createdDate?: string;
   modifiedDate?: string;
   createdBy?: string;
   modifiedBy?: string;
-  userId: number;
-  note: string;
+  customerId: number;
+  note?: string;
   totalCost: number;
   address: string;
-  orderItems: OrderItem[];
-  status: OrderStatus;
+  status: Status;
   paymentMethod: PaymentMethod;
 }
 
