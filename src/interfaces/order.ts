@@ -1,4 +1,3 @@
-
 export enum Status {
   PENDING,
   COMPLETED,
@@ -26,7 +25,10 @@ export interface PaymentPayload {
   status: Status;
   paymentMethod: PaymentMethod;
 }
-
+export interface CancelPayload {
+  userId: number;
+  status: Status;
+}
 export interface OrderCartItem {
   id: number;
   createdDate?: string;
@@ -56,4 +58,3 @@ export interface Order {
   cartItems: OrderCartItem[];
   customerId: number;
 }
-

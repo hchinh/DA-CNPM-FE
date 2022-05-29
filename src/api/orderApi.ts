@@ -1,6 +1,6 @@
 import { ListResponse } from './../interfaces/common';
 import { ApiResponse, ListParams } from 'interfaces';
-import { Order, PaymentPayload } from './../interfaces/order';
+import { CancelPayload, Order, PaymentPayload } from './../interfaces/order';
 import axiosClient from './axiosClient';
 export const orderApi = {
   async payment(payload: PaymentPayload) {
@@ -19,5 +19,9 @@ export const orderApi = {
         total: data.totalElements,
       },
     };
+  },
+
+  async cancel(id: number, payload: CancelPayload) {
+    await axiosClient.put(`/carts/status/${id}`, { ...payload });
   },
 };
