@@ -22,6 +22,7 @@ export const OrderPage = () => {
     total: 20,
   });
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -30,10 +31,10 @@ export const OrderPage = () => {
       setPagination(data.pagination);
       setLoading(false);
     })();
-  }, [location.search]);
+  }, [location.search, refresh]);
 
   const handlePageChange = (page: number) => {
-    console.log('change');
+    
     const queryParams = queryString.parse(location.search);
     const filter = {
       ...queryParams,
@@ -42,7 +43,9 @@ export const OrderPage = () => {
     setPagination({ ...pagination, page: page - 1 });
     navigate(`${location.pathname}?${queryString.stringify(filter)}`);
   };
-  console.log(location.search);
+  const handleOnRefresh = () => {
+    setRefresh(true);
+  };
   return (
     <OrderStyles>
       {loading ? (
@@ -51,7 +54,11 @@ export const OrderPage = () => {
         <>
           <NavBar />
           <div className='content'>
-            <OrderDetail orders={orders as any} />
+            <OrderDetail
+              orders={orders as any}
+              customerId={customerId}
+              onRefresh={handleOnRefresh}
+            />
             <div className='product__pagination'>
               <Pagination
                 total={pagination.total}

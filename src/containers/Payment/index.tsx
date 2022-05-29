@@ -73,7 +73,7 @@ export const Payment = () => {
           ...setOrderStatusAndMethodPayment(PaymentMethod.PAYPAL, Status.PAID),
         };
         const paypalRedirect = await orderApi.payment(orderByPaypal as PaymentPayload);
-        console.log(paypalRedirect);
+        
         window.location.replace(`${paypalRedirect}`);
       },
     });

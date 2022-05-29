@@ -1,13 +1,17 @@
 import { Button, Col, Image, Modal, notification, Row } from 'antd';
-import { Order, PaymentMethod, Status } from 'interfaces';
+import { orderApi } from 'api/orderApi';
+import { CancelPayload, Order, PaymentMethod, Status } from 'interfaces';
 import React, { useState } from 'react';
 import { formatDate } from 'utils/common';
+import { number } from 'yup';
 import { OrderDetailStyles } from './styles';
 
 interface Props {
   orders: Order[];
+  customerId: number;
+  onRefresh: () => void;
 }
-export const OrderDetail: React.FC<Props> = ({ orders }) => {
+export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [orderCancel, setOrderCancel] = useState<Order>();
   const checkCancelOrder = (orderItem: Order) => {
@@ -20,15 +24,15 @@ export const OrderDetail: React.FC<Props> = ({ orders }) => {
     setIsModalVisible(true);
   };
 
-  const handleOk = async (order: any) => {
-    const cancelForm: Order = {
-      ...order,
-      status: String(Status[3]),
+  const handleOk = async (orderId: number) => {
+    const cancelForm: CancelPayload = {
+      userId: customerId,
+      status: Status.CANCELLED,
     };
-    console.log(cancelForm);
     try {
-      //await orderApi.payment(cancelForm);
+      await orderApi.cancel(orderId, cancelForm);
       notification.success({ message: 'Hủy đơn hàng thành công.' });
+      onRefresh();
     } catch (error) {
       notification.error({ message: 'Hủy đơn hàng thất bại. Vui lòng thử lại!!' });
     }
@@ -107,7 +111,7 @@ export const OrderDetail: React.FC<Props> = ({ orders }) => {
         className='cancel-modal'
         visible={isModalVisible}
         onOk={() => {
-          handleOk(orderCancel);
+          handleOk(orderCancel!.id);
           setIsModalVisible(false);
         }}
         onCancel={handleCancel}
