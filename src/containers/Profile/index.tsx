@@ -12,6 +12,8 @@ import { ProfileStyles } from './styles';
 export const ProfilePage = () => {
   const [customer, setCustomer] = useState<User>();
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
+
   const customerId = Number(localStorage.getItem('id'));
   useEffect(() => {
     (async () => {
@@ -19,7 +21,8 @@ export const ProfilePage = () => {
       setCustomer(user);
       setLoading(false);
     })();
-  }, []);
+  }, [refresh]);
+
   return (
     <ProfileStyles>
       {loading ? (
@@ -35,7 +38,7 @@ export const ProfilePage = () => {
                   <ProfileInfo customer={customer as any} />
                 </Col>
                 <Col span={16}>
-                  <ProfileUpdate customer={customer as any} />
+                  <ProfileUpdate customer={customer as any} onRefresh={() => setRefresh(true)} />
                 </Col>
               </Row>
             </div>

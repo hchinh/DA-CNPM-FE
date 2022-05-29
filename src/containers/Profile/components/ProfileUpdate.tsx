@@ -9,9 +9,10 @@ import { ProfileComponentStyles } from './styles';
 
 interface Prop {
   customer: User;
+  onRefresh: () => void;
 }
 
-export const ProfileUpdate: React.FC<Prop> = ({ customer }) => {
+export const ProfileUpdate: React.FC<Prop> = ({ customer, onRefresh }) => {
   const [loading, setLoading] = useState(false);
   const onFinish = async (values: any) => {
     try {
@@ -20,6 +21,7 @@ export const ProfileUpdate: React.FC<Prop> = ({ customer }) => {
       notification.success({
         message: `Cập nhật thông tin thành công`,
       });
+      onRefresh();
       setLoading(false);
     } catch (error: any) {
       notification.error({
