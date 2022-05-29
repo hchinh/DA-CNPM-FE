@@ -397,4 +397,22 @@ export const ProductDetailWrapper = styled.div`
       margin-right: -19px;
     }
   }
+  .product-comments {
+    width: 100%;
+    margin: 20px 0 !important;
+    padding: 10px 20px !important;
+    background-color: #f7f7f7;
+
+    & > .title {
+      margin: 10px 25px;
+      margin-left: 44px;
+      font-size: 21px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    & > .comment {
+      padding: 0 70px;
+    }
+  }
 `;

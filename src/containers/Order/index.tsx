@@ -30,11 +30,11 @@ export const OrderPage = () => {
       setOrders(data.data);
       setPagination(data.pagination);
       setLoading(false);
+      setRefresh(false);
     })();
   }, [location.search, refresh]);
 
   const handlePageChange = (page: number) => {
-    
     const queryParams = queryString.parse(location.search);
     const filter = {
       ...queryParams,
