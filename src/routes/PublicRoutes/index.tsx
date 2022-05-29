@@ -5,6 +5,7 @@ import { OrderPage } from 'containers/Order';
 import { Payment } from 'containers/Payment';
 import { Product } from 'containers/Product';
 import { ProductDetail } from 'containers/ProductDetail';
+import { ProfilePage } from 'containers/Profile';
 import { Route } from 'react-router-dom';
 import { TPublicRoutes } from 'routes/interface';
 
@@ -42,6 +43,11 @@ export const PUBLIC_ROUTES: TPublicRoutes = [
   {
     path: '/order',
     element: <OrderPage />,
+    exact: true,
+  },
+  {
+    path: '/profile',
+    element: <ProfilePage />,
     exact: true,
   },
 ];
