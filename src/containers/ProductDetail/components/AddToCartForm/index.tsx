@@ -28,7 +28,7 @@ export const AddToCartForm: React.FC<Props> = ({ onSubmit }) => {
           <i>
             <ShoppingCartOutlined />
           </i>
-          Add to Cart
+          Thêm vào giỏ hàng
         </button>
       </form>
     </AddToCartWrapper>

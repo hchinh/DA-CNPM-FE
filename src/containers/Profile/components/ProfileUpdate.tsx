@@ -1,10 +1,8 @@
 import { Button, Form, notification, Radio } from 'antd';
 import { userApi } from 'api/userApi';
-import { useAppDispatch, useAppSelector } from 'app/hook';
 import { User } from 'interfaces';
 import Input from 'rc-input';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ProfileComponentStyles } from './styles';
 
 interface Prop {
