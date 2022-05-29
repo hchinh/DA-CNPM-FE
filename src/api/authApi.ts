@@ -11,6 +11,7 @@ export const authApi = {
     const url = '/auth/signup';
     return axiosClient.post(url, data);
   },
+  
   checkToken(payLoad: RefreshTokenPayLoad): Promise<RefreshTokenRespone> {
     const url = '/auth/refreshtoken';
     return axiosClient.post(url, payLoad);

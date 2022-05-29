@@ -86,6 +86,7 @@ export const register = createAsyncThunk(
   }
 );
 
+
 export const logout = createAsyncThunk('/logout', async () => {
   const refreshToken = String(localStorage.getItem('refreshToken'));
   const token = String(localStorage.getItem('token'));
