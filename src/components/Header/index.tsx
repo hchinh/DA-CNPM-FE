@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { LoginOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useAppDispatch, useAppSelector } from 'app/hook';
 import { cartItemsCountSelector } from 'containers/Cart/selectors';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { checkRefreshToken, logout } from 'redux/authSlice';
+import { checkRefreshToken } from 'redux/authSlice';
 import { getCart, setLoading } from 'redux/cartSlice';
 import { HeaderWrapper } from './styles';
+import { UserDropdown } from './UserDropdown';
 
 const NavBar = () => {
   const [navBar, setNavBar] = useState(false);
@@ -47,12 +48,6 @@ const NavBar = () => {
       setNavBar(false);
     }
   };
-  const handleLogout = async () => {
-    try {
-      const resultAction = await dispatch(logout());
-      unwrapResult(resultAction);
-    } catch (error) {}
-  };
 
   window.addEventListener('scroll', changeBackgroundColor);
 
@@ -74,7 +69,9 @@ const NavBar = () => {
               </Link>
 
               <div className='nav__login'>
-                <Link to='/login'>Login</Link>
+                <Link to='/login'>
+                  <LoginOutlined />
+                </Link>
               </div>
             </>
           )}
@@ -89,19 +86,7 @@ const NavBar = () => {
                 </div>
               </Link>
               <li className='nav__itemsaccount'>
-                <img src='/avatar.png' alt='Ảnh đại diện' className='img' />
-                <ul className='nav__itemsmenu'>
-                  <Link to='/profile'>
-                    <li className='nav__menuitems'>Profile</li>
-                  </Link>
-                  <Link to='/order'>
-                    <li className='nav__menuitems'>Order</li>
-                  </Link>
-
-                  <li className='nav__menuitems logout' onClick={handleLogout}>
-                    Logout
-                  </li>
-                </ul>
+                <UserDropdown />
               </li>
             </>
           )}

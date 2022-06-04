@@ -13,3 +13,9 @@ export interface User {
   profilePicture: string;
   enabled: number;
 }
+
+export interface ChangePasswordPayload {
+  email: string;
+  oldPassword: string;
+  password: string;
+}
