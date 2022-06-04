@@ -1,3 +1,4 @@
+import { Menu } from 'antd';
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
@@ -47,7 +48,9 @@ export const HeaderWrapper = styled.div`
       margin-left: 15px;
     }
   }
-
+  .navbar_right {
+    display: flex;
+  }
   .navbar__cart {
     /* background: #fff; */
     border: none;
@@ -58,6 +61,7 @@ export const HeaderWrapper = styled.div`
     cursor: pointer;
     float: right;
     margin-top: 0px;
+    margin-right: 20px;
     position: relative;
   }
 
@@ -103,81 +107,57 @@ export const HeaderWrapper = styled.div`
     height: 14px;
     color: #fff;
   }
-  .img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-left: 28px;
-  }
-  .navbar_right {
-    display: flex;
-  }
-  .nav__itemsmenu {
-    position: absolute;
-    background-color: #fff;
-    top: 82%;
-    right: 29px;
-    border-radius: 2px;
-    width: 150px;
-    z-index: 1;
-    padding-left: 0px;
-    list-style: none;
-    display: none;
-    animation: nav__notifyapp ease-in 0.25s;
-  }
-  .nav__itemsmenu a:visited {
-    color: black;
-  }
-  .nav__itemsmenu a:active {
-    color: black;
-  }
-  .nav__menuitems {
-    padding: 10px;
-  }
-  .nav__itemsaccount:hover .nav__itemsmenu {
-    display: block;
-  }
-  .nav__menuitems::before {
-    content: '';
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent #fff transparent;
-    position: absolute;
-    right: 8px;
-    top: -20px;
-  }
-  .nav__menuitems::after {
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0;
-    top: -9px;
-    width: 90px;
-    height: 12px;
-  }
-  .nav__itemsaccount {
-    list-style: none;
-  }
-  .nav__menuitems:hover {
-    background-color: #f8f8f8;
-    cursor: pointer;
-    color: #3d95f8;
-  }
-  .logout: hover {
-    color: #ff0000;
-  }
-  .nav__login {
+
+  .div-user-info {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-  }
+    justify-content: space-between;
+    cursor: pointer;
 
-  .nav__login a {
-    color: #33cccc;
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
+    & > .userInfo {
+      margin-right: 8px;
+      color: #33cccc;
+    }
   }
-  /* /* Reponsive * */
+  .nav__login {
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #33cccc;
+    font-weight: bold;
+    cursor: pointer;
+  }
+`;
+
+export const MenuStyles = styled(Menu)`
+  min-width: 120px;
+  div.active {
+    background: ${({ theme }) => theme.palette.primary};
+    border: 1px solid ${({ theme }) => theme.palette.primary};
+  }
+  .ant-dropdown-menu-item {
+    padding: 0;
+    .link-menu-item {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      color: ${({ theme }) => theme.text.primary};
+    }
+    .icon-menu-item {
+      margin-right: 10px;
+    }
+    .div-menu-item {
+      display: flex;
+      align-items: center;
+      padding: 5px 12px;
+      & > div {
+        margin-right: 10px;
+        text-align: center;
+        width: 32px;
+      }
+    }
+    .profile-menu-item,
+    .div-menu-item {
+      font-size: 14px;
+    }
+  }
 `;
