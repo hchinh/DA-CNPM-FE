@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const RegisterPageWrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 
   .banner {
     width: 50%;
@@ -12,7 +12,7 @@ export const RegisterPageWrapper = styled.div`
 
     & > img {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       object-fit: content;
       object-position: center;
     }
