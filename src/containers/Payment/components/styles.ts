@@ -8,6 +8,11 @@ export const DetailOrderStyles = styled.div`
       font-size: 14px;
       font-weight: bold;
     }
+    & .info-edit {
+      margin-left: 8px;
+      font-size: 16px;
+      color: #1890ff;
+    }
     & .customer-info-detail {
       display: flex;
       -webkit-box-align: center;

@@ -1,7 +1,8 @@
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { EditOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
 import { CartItem, User } from 'interfaces';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { formatPrice } from 'utils/common';
 import { DetailOrderStyles } from './styles';
 interface Props {
@@ -10,14 +11,21 @@ interface Props {
 }
 
 export const DetailOrder: React.FC<Props> = ({ user, order }) => {
+  const navigate = useNavigate();
   const totalPrice = order.reduce((total, item) => total + item.salePrice * item.quantity, 0);
   return (
     <DetailOrderStyles>
       <div className='total-cost'>
         <div className='total-cost-item customer-info'>
           <span className='block_header-title'>Giao tới</span>
+          <EditOutlined
+            className='info-edit'
+            onClick={() => {
+              navigate('/profile');
+            }}
+          />
           <div className='customer-info-detail'>
-            <span className='customer-name'>{user?.userName}</span>
+            <span className='customer-name'>{user?.name || user?.userName}</span>
             <i></i>
             <span className='customer-phone'>{user?.phoneNumber}</span>
           </div>
@@ -27,7 +35,7 @@ export const DetailOrder: React.FC<Props> = ({ user, order }) => {
           <div className='title'>
             <p>Đơn hàng ({order.length} sản phẩm)</p>
             <a href='/cart'>
-              <ShoppingCartOutlined />
+              <EditOutlined />
               Sửa
             </a>
           </div>
