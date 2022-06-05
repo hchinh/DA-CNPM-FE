@@ -122,9 +122,11 @@ export const HeaderWrapper = styled.div`
   .nav__login {
     text-transform: uppercase;
     font-size: 24px;
-    color: #33cccc;
     font-weight: bold;
     cursor: pointer;
+    & > a {
+      color: #33cccc;
+    }
   }
 `;
 
