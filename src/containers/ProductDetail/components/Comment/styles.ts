@@ -38,4 +38,9 @@ export const CommentStyles = styled.div`
   .ant-row .ant-form-item {
     margin-bottom: 10px;
   }
+
+  .ant-comment-content-author-name {
+    color: #000;
+    font-weight: bold;
+  }
 `;

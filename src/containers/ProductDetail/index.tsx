@@ -7,7 +7,7 @@ import { Loading } from 'components/Loading';
 import { Comment, Product } from 'interfaces';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Comment as CommentComponent } from './components/Comment';
+import { CommentComponent } from './components/Comment';
 import { ProductInfor } from './components/ProductInfo';
 import { ProductRelated } from './components/ProductRelated.tsx';
 import { ProductDetailWrapper } from './styles';
@@ -20,12 +20,6 @@ export const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState({} as Product);
   const [productRelatedList, setProductRelatedList] = useState([] as Product[]);
-  const [comments, setComments] = useState<Comment[]>();
-  const [pagination, setPagination] = useState({
-    page: 0,
-    limit: 5,
-    total: 20,
-  });
 
   const { id } = useParams();
 
@@ -40,25 +34,13 @@ export const ProductDetail = () => {
           page: 0,
           limit: 5,
         });
-        const commentList = await commentApi.getApi({ productId: Number(id), ...pagination });
-        setComments(commentList.data as any);
+
         setProductRelatedList(productList.data);
       }
       setLoading(false);
     })();
   }, [id]);
 
-  useEffect(() => {
-    (async () => {
-      const data = await commentApi.getApi({ productId: Number(id), ...pagination });
-      setComments(data.data as any);
-      setPagination(data.pagination);
-    })();
-  }, [pagination.page]);
-
-  const handlePageChange = (page: number) => {
-    setPagination({ ...pagination, page: page - 1 });
-  };
   return (
     <>
       {loading ? (
@@ -92,12 +74,7 @@ export const ProductDetail = () => {
               </div>
               <div className='product-comments'>
                 <div className='title'>Bình luận và nhận xét: </div>
-                <CommentComponent
-                  comments={comments as any}
-                  productId={Number(id)}
-                  pagination={pagination}
-                  paginChange={handlePageChange}
-                />
+                <CommentComponent productId={Number(id)} />
               </div>
               <div className='RelatedWapper'>
                 <ProductRelated data={productRelatedList} />

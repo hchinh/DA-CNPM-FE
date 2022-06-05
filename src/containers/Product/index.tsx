@@ -98,7 +98,7 @@ export const Product = () => {
                     defaultCurrent={1}
                     total={pagination.total}
                     defaultPageSize={20}
-                    current={pagination.page}
+                    current={pagination.page + 1}
                     style={{ marginTop: '30px', display: 'flex', justifyContent: 'center' }}
                     onChange={handlePageChange}
                   />

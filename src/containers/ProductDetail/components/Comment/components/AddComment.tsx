@@ -1,12 +1,13 @@
 import { Button, Form, Input, notification } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import commentApi from 'api/commentApi';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 interface Props {
   productId: number;
+  onSubmit: () => void;
 }
 
-export const AddComment: React.FC<Props> = ({ productId }) => {
+export const AddComment: React.FC<Props> = ({ productId, onSubmit }) => {
   const customerId = Number(localStorage.getItem('id'));
 
   const handleOnFinish = async (values: any) => {
@@ -16,7 +17,7 @@ export const AddComment: React.FC<Props> = ({ productId }) => {
         message: `Thêm bình luận thành công`,
         placement: 'bottomLeft',
       });
-      window.location.reload();
+      onSubmit();
     } catch (error) {
       notification.success({
         message: `Thất bại !!!!`,
@@ -24,6 +25,7 @@ export const AddComment: React.FC<Props> = ({ productId }) => {
       });
     }
   };
+
   return (
     <div>
       <Form onFinish={handleOnFinish}>
@@ -36,7 +38,9 @@ export const AddComment: React.FC<Props> = ({ productId }) => {
             },
           ]}
         >
-          <TextArea placeholder='Nhập bình luận của bạn.....' id='textarea'></TextArea>
+          <TextArea placeholder='Nhập bình luận của bạn.....' id='textarea'>
+            {'adcndn'}
+          </TextArea>
         </Form.Item>
         <Form.Item>
           <Button type='primary' htmlType='submit'>

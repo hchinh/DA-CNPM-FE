@@ -49,18 +49,19 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
         <div className='nav__title'>
           <Row>
             <Col span={1}>STT</Col>
-            <Col span={13}>Đơn hàng</Col>
+            <Col span={11}>Đơn hàng</Col>
             <Col span={3}>Ngày đặt hàng</Col>
             <Col span={3}>Tổng tiền</Col>
             <Col span={2}>Trạng thái</Col>
             <Col span={2}>Hủy đơn hàng</Col>
+            <Col span={2}>Đánh giá</Col>
           </Row>
         </div>
         <div className='orders_content'>
           {orders.map((order, index) => (
             <Row className='orders_content-item'>
               <Col span={1}>{index + 1}</Col>
-              <Col span={13}>
+              <Col span={11}>
                 <div className='detail-order-item'>
                   {order.cartItems.map((item) => (
                     <div className='detail-content'>
@@ -100,8 +101,23 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
                   </Button>
                 </Col>
               ) : (
-                ''
+                <Col span={2}></Col>
               )}
+              <Col span={2}>
+                {String(order.status) === Status[1] ? (
+                  <Button
+                    type='primary'
+                    onClick={() => {
+                      setOrderCancel(order);
+                      showModal();
+                    }}
+                  >
+                    Đánh giá
+                  </Button>
+                ) : (
+                  ''
+                )}
+              </Col>
             </Row>
           ))}
         </div>

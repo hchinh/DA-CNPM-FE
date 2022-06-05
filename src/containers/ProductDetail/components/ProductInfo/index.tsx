@@ -1,5 +1,5 @@
 import { unwrapResult } from '@reduxjs/toolkit';
-import { notification } from 'antd';
+import { notification, Rate } from 'antd';
 import categoryApi from 'api/categoryApi';
 import { useAppDispatch, useAppSelector } from 'app/hook';
 import { ProductDetailWrapper } from 'containers/ProductDetail/styles';
@@ -19,7 +19,6 @@ export const ProductInfor: React.FC<Props> = ({ data }) => {
   const loggedInUser = useAppSelector((state) => state.auth.currentUser);
   const { ...product } = data;
   const [categoryName, setCategoryName] = useState('');
-
   useEffect(() => {
     (async () => {
       if (product.categoryId) {
@@ -88,11 +87,25 @@ export const ProductInfor: React.FC<Props> = ({ data }) => {
             <span className='ProductItem'>Số lượng có sẵn </span>
             <span className='ProductItem'>{product?.unitInStock || 'Hết hàng'}</span>
           </div>
+          <div className='ProductTableRow'>
+            <span className='ProductItem'>Đánh giá:</span>
+            <span className='ProductItem'>
+              {product.ratingAverage ? (
+                <Rate allowHalf value={product.ratingAverage} />
+              ) : (
+                'Chưa có đánh giá'
+              )}
+            </span>
+          </div>
         </div>
-        <div className='ProductCartWapper'>
-          <div className='ProductPriceWapper'>{formatPrice(product?.price)}</div>
-          <AddToCartForm onSubmit={handleAddToCartForm} />
-        </div>
+        {product.unitInStock ? (
+          <div className='ProductCartWapper'>
+            <div className='ProductPriceWapper'>{formatPrice(product?.price)}</div>
+            <AddToCartForm onSubmit={handleAddToCartForm} />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </ProductDetailWrapper>
   );
