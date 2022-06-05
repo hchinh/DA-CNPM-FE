@@ -10,6 +10,7 @@ export const PaymentStyles = styled.div`
     background: #f5f5fa;
     padding: 30px 100px;
   }
+  
   .content {
     display: flex;
     justify-content: center;
@@ -53,33 +54,5 @@ export const PaymentStyles = styled.div`
     padding-left: 2.5rem;
     width: 100%;
   }
-  #paypal {
-    background: #ffc43a;
-    border: 1px solid #ffc43a;
-    color: #121661;
-    font-family: PayPalSansBig-Regular, Helvetica Neue, Arial, sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    padding: 0.825rem 1.875rem;
-    position: relative;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    display: inline-block;
-    width: 100%;
-    max-height: 3.5rem;
-    text-align: center;
-    text-decoration: none;
-    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease,
-      box-shadow 0.2s ease;
-
-    & > img {
-      padding: 0;
-      display: inline-block;
-      background: none;
-      border: none;
-      width: 9rem;
-      max-width: 100%;
-    }
-  }
+ 
 `;

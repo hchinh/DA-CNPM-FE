@@ -1,5 +1,4 @@
 import { Modal, notification } from 'antd';
-import axiosClient from 'api/axiosClient';
 import { orderApi } from 'api/orderApi';
 import { userApi } from 'api/userApi';
 import { useAppSelector } from 'app/hook';
@@ -8,9 +7,9 @@ import NavBar from 'components/Header';
 import { Loading } from 'components/Loading';
 import { PaymentMethod, PaymentPayload, Status, User } from 'interfaces';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { setInterval } from 'timers/promises';
+import { useNavigate } from 'react-router-dom';
 import { DetailOrder } from './components/DetailOrder';
+import { PayPalPayment } from './components/Paypal';
 import { PaymentStyles } from './styles';
 
 export const Payment = () => {
@@ -21,8 +20,6 @@ export const Payment = () => {
   const [loading, setLoading] = useState(true);
   type Order = Omit<PaymentPayload, 'paymentMethod' | 'status'>;
   const [order, setOrder] = useState<Order>();
-  const [linkPayment, setLinkPayment] = useState<String>();
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -78,12 +75,8 @@ export const Payment = () => {
             </div>
             <div className='content'>
               <div className='payment-method'>
-                <button className='payment-button' id='paypal'>
-                  <img
-                    src='https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg'
-                    alt='paypal'
-                  />
-                </button>
+                <PayPalPayment order={order as any} />
+
                 <button className='payment-button' id='cash' onClick={handleClickOnCashPayment}>
                   Thanh toán khi nhận hàng
                 </button>
