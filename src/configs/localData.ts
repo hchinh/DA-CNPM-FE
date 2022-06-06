@@ -33,7 +33,7 @@ export const ORDER_STATUS = [
     value: Status.CANCELLED,
     text: 'Cancelled',
     color: 'violet',
-    colorText: '#665ca7',
+    colorText: '#ff0000',
     backgroundColor: '#e0e0ff',
   },
   {

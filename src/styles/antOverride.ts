@@ -21,7 +21,17 @@ export const AntOverrideStyles = createGlobalStyle`
       color:red;
       opacity:0.7;
   }
-  
+  .ant-drawer-header{
+      background-color: #2196f3;
+  }
+  .ant-drawer-title{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+  .ant-drawer-close{
+      color:#fff
+  } 
       
   
 `;

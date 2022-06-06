@@ -23,5 +23,5 @@ export const formatDate = (text?: string) => {
 export const formatOrderStatus = (data: string) => {
   if (!data) return null;
   const restItem = ORDER_STATUS.find((item) => String(Status[item.value]) === data);
-  return <Tag color={restItem?.color}>{restItem?.text ? restItem.text : data}</Tag>;
+  return <Tag color={restItem?.colorText}>{restItem?.text ? restItem.text : data}</Tag>;
 };
