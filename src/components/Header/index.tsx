@@ -15,6 +15,7 @@ const NavBar = () => {
   const [navBar, setNavBar] = useState(false);
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.cart.loading);
+  const loggedInUser = Number(localStorage.getItem('id'));
 
   const cartItemsCount = useSelector(cartItemsCountSelector);
 
@@ -31,15 +32,12 @@ const NavBar = () => {
 
   useEffect(() => {
     (async () => {
-      if (isLoggedIn) {
-        const resultAction = await dispatch(getCart(Number(loggedInUser.id)));
+      if (loggedInUser) {
+        const resultAction = await dispatch(getCart(loggedInUser));
         unwrapResult(resultAction);
       }
     })();
   }, [loading]);
-
-  const loggedInUser = useAppSelector((state) => state.auth.currentUser);
-  const isLoggedIn = !!loggedInUser?.id;
 
   const changeBackgroundColor = () => {
     if (window.scrollY >= 400) {
@@ -58,7 +56,7 @@ const NavBar = () => {
           PickBazar
         </Link>
         <div className='navbar_right'>
-          {!isLoggedIn && (
+          {!loggedInUser ? (
             <>
               <Link to='/login'>
                 <div className='navbar__cart'>
@@ -74,8 +72,7 @@ const NavBar = () => {
                 </Link>
               </div>
             </>
-          )}
-          {isLoggedIn && (
+          ) : (
             <>
               <Link to='/cart'>
                 <div className='navbar__cart'>

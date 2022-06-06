@@ -124,8 +124,8 @@ export const HeaderWrapper = styled.div`
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    span {
-      color: rgb(51, 204, 204);
+    & > a {
+      color: #33cccc;
     }
   }
 `;
