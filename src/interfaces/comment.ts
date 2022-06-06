@@ -16,3 +16,9 @@ export interface Comment {
 export interface CommentPayload extends ListParams {
   productId: number;
 }
+
+export interface FeedBackPayload {
+  rating: number;
+  productId: number;
+  customerId: number;
+}

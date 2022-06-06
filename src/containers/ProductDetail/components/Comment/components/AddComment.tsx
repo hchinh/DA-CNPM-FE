@@ -1,7 +1,8 @@
-import { Button, Form, Input, notification } from 'antd';
+import { Button, Form, notification } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
-import commentApi from 'api/commentApi';
-import React, { useEffect, useState } from 'react';
+import { commentApi } from 'api/commentApi';
+import React from 'react';
+
 interface Props {
   productId: number;
   onSubmit: () => void;

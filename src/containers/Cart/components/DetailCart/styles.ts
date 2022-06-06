@@ -99,4 +99,9 @@ export const DetailCartStyles = styled.div`
       color: red;
     }
   }
+  .info-edit {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #1890ff;
+  }
 `;

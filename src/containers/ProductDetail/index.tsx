@@ -1,18 +1,15 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import commentApi from 'api/commentApi';
 import productApi from 'api/productApi';
 import { Footer } from 'components/Footer';
 import NavBar from 'components/Header';
 import { Loading } from 'components/Loading';
-import { Comment, Product } from 'interfaces';
+import { Product } from 'interfaces';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { CommentComponent } from './components/Comment';
 import { ProductInfor } from './components/ProductInfo';
 import { ProductRelated } from './components/ProductRelated.tsx';
 import { ProductDetailWrapper } from './styles';
-
-import queryString from 'query-string';
 
 export const ProductDetail = () => {
   const navigate = useNavigate();

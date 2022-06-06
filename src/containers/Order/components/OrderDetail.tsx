@@ -1,9 +1,10 @@
-import { Button, Col, Image, Modal, notification, Row } from 'antd';
+import { Button, Col, Drawer, Image, Modal, notification, Rate, Row } from 'antd';
 import { orderApi } from 'api/orderApi';
 import { CancelPayload, Order, PaymentMethod, Status } from 'interfaces';
 import React, { useState } from 'react';
-import { formatDate } from 'utils/common';
+import { formatDate, formatOrderStatus } from 'utils/common';
 import { number } from 'yup';
+import { Feedback } from './Feedback';
 import { OrderDetailStyles } from './styles';
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 }
 export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [drawerVisible, setDrawerVisible] = useState(false);
   const [orderCancel, setOrderCancel] = useState<Order>();
   const checkCancelOrder = (orderItem: Order) => {
     return (
@@ -87,7 +89,7 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
               <Col span={3} style={{ fontWeight: 'bold', color: '#1890ff' }}>
                 {order.totalCost}
               </Col>
-              <Col span={2}>{order.status}</Col>
+              <Col span={2}>{formatOrderStatus(String(order.status))}</Col>
               {checkCancelOrder(order) ? (
                 <Col span={2}>
                   <Button
@@ -108,8 +110,7 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
                   <Button
                     type='primary'
                     onClick={() => {
-                      setOrderCancel(order);
-                      showModal();
+                      setDrawerVisible(true);
                     }}
                   >
                     Đánh giá
@@ -118,10 +119,18 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
                   ''
                 )}
               </Col>
+              <Feedback
+                order={order}
+                onClose={() => {
+                  setDrawerVisible(false);
+                }}
+                visible={drawerVisible}
+              />
             </Row>
           ))}
         </div>
       </div>
+
       <Modal
         title='Hủy đơn hàng'
         className='cancel-modal'

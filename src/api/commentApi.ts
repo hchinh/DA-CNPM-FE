@@ -1,8 +1,8 @@
-import { CommentPayload } from './../interfaces/comment';
+import { CommentPayload, FeedBackPayload } from './../interfaces/comment';
 import { ListParams, ListResponse, ApiResponse } from './../interfaces/common';
 import axiosClient from './axiosClient';
 
-const commentApi = {
+export const commentApi = {
   async getApi(params: CommentPayload): Promise<ListResponse<Comment>> {
     const data: ApiResponse<Comment> = await axiosClient.get('/comments', { params });
     return {
@@ -15,4 +15,8 @@ const commentApi = {
   },
 };
 
-export default commentApi;
+export const feedbackApi = {
+  async create(payload: FeedBackPayload) {
+    await axiosClient.post('/feedbacks', { ...payload });
+  },
+};
