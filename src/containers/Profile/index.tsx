@@ -38,7 +38,10 @@ export const ProfilePage = () => {
                   <ProfileInfo customer={customer as any} />
                 </Col>
                 <Col span={16}>
-                  <ProfileUpdate customer={customer as any} onRefresh={() => setRefresh(true)} />
+                  <ProfileUpdate
+                    customer={customer as any}
+                    onRefresh={() => setRefresh(!refresh)}
+                  />
                 </Col>
               </Row>
             </div>
