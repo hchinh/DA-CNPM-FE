@@ -12,6 +12,8 @@ export interface Product {
   unitInStock: number;
   thumbnail?: string;
   categoryId: number;
+  ratingAverage: number;
+  discount: number;
 }
 
 export interface Category {

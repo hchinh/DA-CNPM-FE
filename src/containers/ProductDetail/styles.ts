@@ -235,13 +235,11 @@ export const ProductDetailWrapper = styled.div`
     transition: all 0.3s ease 0s;
   }
   .header {
-    line-height: 43px;
-    color: #33cccc;
-    font-size: 30px;
-    margin-left: 23px;
-    text-decoration: none;
+    margin: 10px 25px;
+    margin-left: 44px;
+    font-size: 21px;
     font-weight: 600;
-    font-family: 'Dancing Script';
+    color: #000;
   }
   .navbar__cart {
     /* background: #fff; */

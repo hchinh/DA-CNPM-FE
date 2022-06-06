@@ -1,15 +1,14 @@
 import { Pagination } from 'antd';
 import { orderApi } from 'api/orderApi';
-import { useAppSelector } from 'app/hook';
 import { Footer } from 'components/Footer';
 import NavBar from 'components/Header';
 import { Loading } from 'components/Loading';
 import { Order } from 'interfaces';
+import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { OrderDetail } from './components/OrderDetail';
 import { OrderStyles } from './styles';
-import queryString from 'query-string';
 
 export const OrderPage = () => {
   const navigate = useNavigate();

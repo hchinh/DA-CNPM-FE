@@ -1,3 +1,4 @@
+import { EditOutlined } from '@ant-design/icons';
 import { Modal } from 'antd';
 import { useAppSelector } from 'app/hook';
 import { CartItem, User } from 'interfaces';
@@ -45,7 +46,15 @@ export const TotalCost: React.FC<Props> = ({ user }) => {
     <DetailCartStyles>
       <div className='total-cost'>
         <div className='total-cost-item customer-info'>
-          <span className='block_header-title'>Giao tới</span>
+          <span className='block_header-title'>
+            Giao tới
+            <EditOutlined
+              className='info-edit'
+              onClick={() => {
+                navigate('/profile');
+              }}
+            />
+          </span>
           <div className='customer-info-detail'>
             <span className='customer-name'>{user?.userName}</span>
             <i></i>

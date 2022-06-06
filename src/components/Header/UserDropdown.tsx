@@ -70,7 +70,7 @@ export const UserDropdown = () => {
     </MenuStyles>
   );
   return (
-    <Dropdown overlay={userMenu} trigger={['click']}>
+    <Dropdown overlay={userMenu} trigger={['click']} overlayStyle={{ zIndex: 100000000 }}>
       <div className='div-user-info'>
         <span className='userInfo'>
           <strong>{profile?.name}</strong>

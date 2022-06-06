@@ -1,4 +1,4 @@
-import { Pagination } from 'antd';
+import { Comment as CommentAntD, Pagination } from 'antd';
 import { Comment, ListParams } from 'interfaces';
 import React from 'react';
 import { formatDate } from 'utils/common';
@@ -20,15 +20,16 @@ export const CommentList: React.FC<Props> = ({ comments, pagination, paginChange
       <div className='comment-content'>
         {comments.map((comment) => (
           <div className='comment-item'>
-            <div className='comment-info'>
-              <p className='comment-creater'>
-                <img src='../avatar.png' alt='avartar' />
-                {comment.createdBy || 'User'}
-              </p>
-
-              <p className='comment-create-time'>{formatDate(comment.createdDate)}</p>
-            </div>
-            <div className='comment-item-content'>{comment.comment}</div>
+            <CommentAntD
+              content={comment.comment}
+              author={comment.customer.name}
+              avatar={
+                comment.customer.profilePicture !== null
+                  ? `data:image/png;base64,${comment.customer.profilePicture}`
+                  : '../avatar.png'
+              }
+              datetime={formatDate(comment.createdDate)}
+            />
           </div>
         ))}
       </div>
