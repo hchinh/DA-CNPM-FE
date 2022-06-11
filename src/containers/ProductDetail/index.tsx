@@ -2,6 +2,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import productApi from 'api/productApi';
 import { Footer } from 'components/Footer';
 import NavBar from 'components/Header';
+import LaunchScreen from 'components/LaunchScreen';
 import { Loading } from 'components/Loading';
 import { Product } from 'interfaces';
 import React, { useEffect, useState } from 'react';
@@ -12,35 +13,45 @@ import { ProductRelated } from './components/ProductRelated.tsx';
 import { ProductDetailWrapper } from './styles';
 
 export const ProductDetail = () => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const [loading, setLoading] = useState(true);
+  const [startloading, setStartLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState({} as Product);
   const [productRelatedList, setProductRelatedList] = useState([] as Product[]);
 
   const { id } = useParams();
 
+  const getData = async (id: number) => {
+    const data = await productApi.getById(id);
+    setProduct(data);
+
+    const recommendList = await productApi.recommend(id, { limit: 5, page: 0 });
+    setProductRelatedList(recommendList.data);
+  };
+
   useEffect(() => {
     (async () => {
       if (id) {
-        const data = await productApi.getById(Number(id));
-        setProduct(data);
-
-        const productList = await productApi.getAll({
-          categoryId: data.categoryId,
-          page: 0,
-          limit: 5,
-        });
-
-        setProductRelatedList(productList.data);
+        await getData(Number(id));
+        setStartLoading(false);
       }
-      setLoading(false);
     })();
-  }, [id]);
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      if (id) {
+        setLoading(true);
+        await getData(Number(id));
+        setLoading(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    })();
+  }, [location.pathname]);
 
   return (
     <>
-      {loading ? (
+      {startloading ? (
         <Loading />
       ) : (
         <ProductDetailWrapper>
@@ -79,6 +90,7 @@ export const ProductDetail = () => {
             </div>
           </div>
           <Footer />
+          {loading && <LaunchScreen />}
         </ProductDetailWrapper>
       )}
     </>
