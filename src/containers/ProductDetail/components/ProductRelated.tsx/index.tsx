@@ -11,7 +11,7 @@ export const ProductRelated: React.FC<Props> = ({ data }) => {
 
   return (
     <ProductRelatedwrapper>
-      <span className='header'>Sản phẩm liên quan</span>
+      <span className='header'>Sản phẩm gợi ý</span>
       <ProductList listData={productList} />
     </ProductRelatedwrapper>
   );

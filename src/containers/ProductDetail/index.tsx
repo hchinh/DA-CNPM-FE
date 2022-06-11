@@ -18,21 +18,22 @@ export const ProductDetail = () => {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState({} as Product);
   const [productRelatedList, setProductRelatedList] = useState([] as Product[]);
+  const customerId = localStorage.getItem('id');
 
   const { id } = useParams();
 
-  const getData = async (id: number) => {
-    const data = await productApi.getById(id);
+  const getData = async (productId: number, customerId: number) => {
+    const data = await productApi.getById(productId);
     setProduct(data);
 
-    const recommendList = await productApi.recommend(id, { limit: 5, page: 0 });
+    const recommendList = await productApi.recommend(customerId, { limit: 5, page: 0 });
     setProductRelatedList(recommendList.data);
   };
 
   useEffect(() => {
     (async () => {
       if (id) {
-        await getData(Number(id));
+        await getData(Number(id), Number(customerId) || 1);
         setStartLoading(false);
       }
     })();
@@ -42,7 +43,7 @@ export const ProductDetail = () => {
     (async () => {
       if (id) {
         setLoading(true);
-        await getData(Number(id));
+        await getData(Number(id), Number(customerId) || 1);
         setLoading(false);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
