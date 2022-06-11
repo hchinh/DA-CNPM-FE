@@ -88,7 +88,7 @@ export const ProductInfor: React.FC<Props> = ({ data }) => {
             <span className='ProductItem'>{product?.unitInStock || 'Hết hàng'}</span>
           </div>
           <div className='ProductTableRow'>
-            <span className='ProductItem'>Đánh giá:</span>
+            <span className='ProductItem'>Đánh giá</span>
             <span className='ProductItem'>
               {product.ratingAverage ? (
                 <Rate allowHalf value={product.ratingAverage} />

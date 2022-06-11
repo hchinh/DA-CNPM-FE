@@ -2,6 +2,7 @@ import { Button, Form, notification } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { commentApi } from 'api/commentApi';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   productId: number;
@@ -9,20 +10,28 @@ interface Props {
 }
 
 export const AddComment: React.FC<Props> = ({ productId, onSubmit }) => {
+  const navigate = useNavigate();
   const customerId = Number(localStorage.getItem('id'));
 
   const handleOnFinish = async (values: any) => {
     try {
+      if (!customerId) {
+        notification.info({
+          message: 'Vui lòng đăng nhập để thêm bình luận!',
+          placement: 'top',
+        });
+        return navigate('/login');
+      }
       await commentApi.create({ ...values, productId, customerId });
       notification.success({
         message: `Thêm bình luận thành công`,
-        placement: 'bottomLeft',
+        placement: 'bottomRight',
       });
       onSubmit();
     } catch (error) {
-      notification.success({
+      notification.error({
         message: `Thất bại !!!!`,
-        placement: 'bottomLeft',
+        placement: 'bottomRight',
       });
     }
   };

@@ -43,4 +43,10 @@ export const CommentStyles = styled.div`
     color: #000;
     font-weight: bold;
   }
+  #comment-empty {
+    text-align: center;
+  }
+  .ant-empty-description {
+    display: none;
+  }
 `;

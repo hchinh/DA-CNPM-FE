@@ -234,13 +234,7 @@ export const ProductDetailWrapper = styled.div`
     background-color: rgb(255, 255, 255);
     transition: all 0.3s ease 0s;
   }
-  .header {
-    margin: 10px 25px;
-    margin-left: 44px;
-    font-size: 21px;
-    font-weight: 600;
-    color: #000;
-  }
+
   .navbar__cart {
     /* background: #fff; */
     border: none;
