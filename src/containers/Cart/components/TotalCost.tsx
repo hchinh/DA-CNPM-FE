@@ -14,33 +14,15 @@ interface Props {
 export const TotalCost: React.FC<Props> = ({ user }) => {
   const navigate = useNavigate();
   const [totalCost, setTotalCost] = useState(0);
-  const [isCheckout, setIsCheckout] = useState(false);
-  const selectedList = useAppSelector((state) => state.cart.selectedList);
+  const cartList = useAppSelector((state) => state.cart.cartItems);
 
   useEffect(() => {
-    if (selectedList.length) {
-      const totalCost = selectedList.reduce((total: number, cur: CartItem) => {
-        total += cur.salePrice * cur.quantity;
-        return total;
-      }, 0);
-      setTotalCost(totalCost);
-      setIsCheckout(true);
-    } else {
-      setTotalCost(0);
-      setIsCheckout(false);
-    }
-  }, [selectedList]);
-
-  const handleCheckoutButtonClick = () => {
-    if (isCheckout) {
-      navigate('/checkout/payment');
-    } else {
-      Modal.info({
-        title: 'Thông báo',
-        content: 'Vui lòng chọn ít nhất 1 sản phẩm trước khi thanh toán.',
-      });
-    }
-  };
+    const totalCost = cartList.reduce((total: number, cur: CartItem) => {
+      total += cur.salePrice * cur.quantity;
+      return total;
+    }, 0);
+    setTotalCost(totalCost);
+  }, [cartList]);
 
   return (
     <DetailCartStyles>
@@ -78,7 +60,13 @@ export const TotalCost: React.FC<Props> = ({ user }) => {
             <div className='prices__value'>{formatPrice(totalCost)}</div>
           </div>
         </div>
-        <button onClick={handleCheckoutButtonClick}>MUA HÀNG</button>
+        <button
+          onClick={() => {
+            navigate('/checkout/payment');
+          }}
+        >
+          MUA HÀNG
+        </button>
       </div>
     </DetailCartStyles>
   );

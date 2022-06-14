@@ -10,6 +10,7 @@ export enum Status {
 export enum PaymentMethod {
   CASH,
   PAYPAL,
+  PAYPAL_WEB,
 }
 
 export interface PaymentPayload {

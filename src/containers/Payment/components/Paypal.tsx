@@ -38,7 +38,7 @@ export const PayPalPayment: React.FC<Props> = ({ order }) => {
     return actions.order.capture().then(async function (details: any) {
       const orderByPaypal = {
         ...order,
-        paymentMethod: PaymentMethod.CASH,
+        paymentMethod: PaymentMethod.PAYPAL_WEB,
         status: Status.PAID,
       };
       await orderApi.payment(orderByPaypal as PaymentPayload);
