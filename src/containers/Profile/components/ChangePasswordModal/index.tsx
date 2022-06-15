@@ -3,6 +3,7 @@ import { userApi } from 'api/userApi';
 import ModalCustom from 'components/ModalCustom';
 import { ModalForwardRefHandle } from 'interfaces/modal';
 import React, { useImperativeHandle, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FormChangePassword from './FormChangePassword';
 
 const ChangePasswordModal: React.ForwardRefRenderFunction<ModalForwardRefHandle, unknown> = (
@@ -12,6 +13,7 @@ const ChangePasswordModal: React.ForwardRefRenderFunction<ModalForwardRefHandle,
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useImperativeHandle(
     ref,
@@ -37,13 +39,14 @@ const ChangePasswordModal: React.ForwardRefRenderFunction<ModalForwardRefHandle,
         });
       })
       .then((response: any) => {
-        notification.success({ message: response.message });
+        notification.success({ message: 'Thay đổi mật khẩu thành công' });
         setLoading(false);
         handleClose();
+        navigate('/login');
       })
       .catch((error) => {
         setLoading(false);
-        notification.error({ message: error.message });
+        notification.error({ message: 'Thay đổi mật khẩu thất bại' });
       });
   };
 
