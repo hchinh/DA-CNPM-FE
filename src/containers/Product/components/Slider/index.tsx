@@ -7,7 +7,7 @@ export const Slider = () => {
         <figure>
           <div className='sliderImg'>
             <div className='modal'>
-              <div className='header'>Multishop</div>
+              <div className='header'>Spider</div>
               <div className='title'>Build Your Dreams</div>
             </div>
           </div>

@@ -14,7 +14,6 @@ export const ProfileStyles = styled.div`
     & > .container {
       margin: 20px 250px;
       padding: 20px;
-      background-color: #d9e3a4;
       border-radius: 10px;
     }
   }

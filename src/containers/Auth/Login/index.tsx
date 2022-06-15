@@ -74,11 +74,6 @@ const LoginPage: FC = () => {
                 </Form.Item>
               </Space>
             </Form.Item>
-            <Form.Item>
-              <Link className='login-form-forgot' to='/forgot-password'>
-                Forgot password?
-              </Link>
-            </Form.Item>
 
             <Form.Item>
               <Button

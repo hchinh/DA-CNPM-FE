@@ -53,7 +53,7 @@ const NavBar = () => {
     <HeaderWrapper>
       <div className={navBar ? 'navBar active ' : 'navBar'}>
         <Link to={'/'} className='header'>
-          PickBazar
+          Spider Shop
         </Link>
         <div className='navbar_right'>
           {!loggedInUser ? (
