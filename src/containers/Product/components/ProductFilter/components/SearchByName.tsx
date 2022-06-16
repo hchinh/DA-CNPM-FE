@@ -14,7 +14,7 @@ export const SearchByName: React.FC<Props> = ({ onChange }) => {
       <Input
         placeholder='Search'
         name='p'
-        onPressEnter={handleSearch}
+        onMouseOut={handleSearch}
         style={{ borderRadius: '8px', fontWeight: 'bold' }}
       />
     </div>
