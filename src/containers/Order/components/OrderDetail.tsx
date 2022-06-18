@@ -16,6 +16,7 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [orderCancel, setOrderCancel] = useState<Order>();
+  const [orderFeedback, setOrderFeedback] = useState<Order>(orders[0]);
   const checkCancelOrder = (orderItem: Order) => {
     return (
       String(orderItem.paymentMethod) === PaymentMethod[0] && String(orderItem.status) === Status[0]
@@ -110,6 +111,7 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
                   <Button
                     type='primary'
                     onClick={() => {
+                      setOrderFeedback(order);
                       setDrawerVisible(true);
                     }}
                   >
@@ -120,7 +122,7 @@ export const OrderDetail: React.FC<Props> = ({ orders, customerId, onRefresh }) 
                 )}
               </Col>
               <Feedback
-                order={order}
+                order={orderFeedback}
                 onClose={() => {
                   setDrawerVisible(false);
                 }}
